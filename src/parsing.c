@@ -16,7 +16,14 @@ bool	check_file(int fd, char *filename, t_data *data)
 	int	n_line;
 
 	n_line = 0;
-
+	if (!init_textures(data))
+		return (false);
+	if (!parse_textures(fd, data, &n_line))
+		return (false);
+	if (!parse_map(fd, data, &n_line))
+		return (false);
+	if (!check_map(data))
+		return (false);
 }
 
 bool	parsing(char *filename, int ac, t_data *data)
