@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_format_str.c                                    :+:      :+:    :+:   */
+/*   ft_putnbr_u.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: peiyli <peiyli@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yopeng <yopeng@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/20 10:26:54 by peiyli            #+#    #+#             */
-/*   Updated: 2025/07/04 16:53:18 by peiyli           ###   ########.fr       */
+/*   Created: 2025/05/16 15:42:09 by yopeng            #+#    #+#             */
+/*   Updated: 2025/08/05 15:21:07 by yopeng           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_format_str(va_list args)
+int	ft_putnbr_u(unsigned int n)
 {
-	int		count;
-	char	*str;
+	int	len;
 
-	str = va_arg(args, char *);
-	if (!str)
-	{
-		ft_putstr("(null)");
-		return (6);
-	}
-	ft_putstr(str);
-	count = (int)ft_strlen(str);
-	return (count);
+	len = 0;
+	if (n >= 10)
+		len += ft_putnbr_u(n / 10);
+	len += ft_putchar((n % 10) + '0');
+	return (len);
 }

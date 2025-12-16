@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstlast_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: peiyli <peiyli@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yopeng <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/12 13:18:28 by peiyli            #+#    #+#             */
-/*   Updated: 2025/10/15 15:48:02 by peiyli           ###   ########.fr       */
+/*   Created: 2025/05/15 15:02:05 by yopeng            #+#    #+#             */
+/*   Updated: 2025/05/15 15:02:16 by yopeng           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,9 @@
 
 t_list	*ft_lstlast(t_list *lst)
 {
-	while (lst)
-	{
-		if (lst->next == NULL)
-			break ;
-		else
-			lst = lst->next;
-	}
+	if (!lst)
+		return (NULL);
+	while (lst->next)
+		lst = lst->next;
 	return (lst);
 }

@@ -1,23 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_format_hexupper.c                               :+:      :+:    :+:   */
+/*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: peiyli <peiyli@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yopeng <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/21 14:49:44 by peiyli            #+#    #+#             */
-/*   Updated: 2025/07/04 16:52:46 by peiyli           ###   ########.fr       */
+/*   Created: 2025/08/05 15:58:33 by yopeng            #+#    #+#             */
+/*   Updated: 2025/08/05 16:03:47 by yopeng           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_format_hexupper(va_list args)
+char	*ft_strndup(const char *s, size_t n)
 {
-	int				count;
-	unsigned int	nbr;
+	char	*dup;
+	size_t	i;
 
-	nbr = va_arg(args, unsigned int);
-	count = ft_base2to16_upper(nbr);
-	return (count);
+	dup = malloc(n + 1);
+	if (!dup)
+		return (NULL);
+	i = 0;
+	while (i < n && s[i])
+	{
+		dup[i] = s[i];
+		i++;
+	}
+	dup[i] = '\0';
+	return (dup);
 }

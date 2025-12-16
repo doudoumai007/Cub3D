@@ -3,106 +3,99 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: peiyli <peiyli@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yopeng <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/06 11:25:59 by peiyli            #+#    #+#             */
-/*   Updated: 2025/10/15 15:50:15 by peiyli           ###   ########.fr       */
+/*   Created: 2025/05/05 11:51:25 by yopeng            #+#    #+#             */
+/*   Updated: 2025/05/12 14:54:32 by yopeng           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_count_words(char const *s, char c)
+static size_t	count_word(char	const *s, char c)
 {
-	int		flag;
-	int		n;
-	size_t	i;
+	size_t	word_begin;
+	size_t	count;
 
-	i = 0;
-	flag = 0;
-	n = 0;
-	while (i < ft_strlen(s))
-	{
-		if (s[i] != c)
-		{
-			if (flag == 0)
-				n++;
-			flag = 1;
-		}
-		else
-			flag = 0;
-		i++;
-	}
-	return (n);
-}
-
-void	ft_free(char **tab, int j)
-{
-	while (j > 0)
-	{
-		j--;
-		free(tab[j]);
-	}
-	free(tab);
-}
-
-char	*ft_cpy_str(char const *s1, int n)
-{
-	int		i;
-	char	*s2;
-
-	s2 = (char *)malloc((n + 1) * sizeof(char));
-	if (!s2)
-		return (NULL);
-	i = 0;
-	while (i < n && s1[i])
-	{
-		s2[i] = s1[i];
-		i++;
-	}
-	s2[i] = '\0';
-	return (s2);
-}
-
-char	**ft_allo_str(char const *s, char c, char **tab)
-{
-	size_t	i;
-	int		n;
-
-	i = 0;
+	word_begin = 0;
+	count = 0;
 	while (*s)
 	{
-		while (*s == c)
-			s++;
-		if (!*s)
-			break ;
-		n = 0;
-		while (*(s + n) != c && *(s + n) != '\0')
-			n++;
-		tab[i] = ft_cpy_str(s, n);
-		if (tab[i] == NULL)
+		if (*s != c && !word_begin)
 		{
-			ft_free(tab, i);
-			return (NULL);
+			word_begin = 1;
+			count++;
 		}
-		i++;
-		s += n;
+		else if (*s == c)
+			word_begin = 0;
+		s++;
 	}
-	tab[i] = NULL;
-	return (tab);
+	return (count);
+}
+
+static char	*word_dup(char const *s, size_t len)
+{
+	char	*word;
+	size_t	i;
+
+	word = malloc(len + 1);
+	if (!word)
+		return (NULL);
+	i = 0;
+	while (i < len)
+	{
+		word[i] = s[i];
+		i++;
+	}
+	word[i] = '\0';
+	return (word);
+}
+
+static char	*extract_word(char const **s_ptr, char c)
+{
+	char const	*start;
+	size_t		len;
+	char const	*s;
+
+	s = *s_ptr;
+	while (*s && *s == c)
+		s++;
+	start = s;
+	len = 0;
+	while (*s && *s != c)
+	{
+		len++;
+		s++;
+	}
+	*s_ptr = s;
+	return (word_dup(start, len));
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char	**tab;
-	int		n;
+	char		**split;
+	size_t		wordcount;
+	size_t		i;
 
-	if (s == NULL)
+	if (!s)
 		return (NULL);
-	n = ft_count_words(s, c);
-	tab = (char **)malloc((n + 1) * sizeof(char *));
-	if (tab == NULL)
+	wordcount = count_word(s, c);
+	split = malloc((wordcount + 1) * sizeof(char *));
+	if (!split)
 		return (NULL);
-	tab = ft_allo_str(s, c, tab);
-	return (tab);
+	i = 0;
+	while (i < wordcount)
+	{
+		split[i] = extract_word(&s, c);
+		if (!split[i])
+		{
+			while (i--)
+				free(split[i]);
+			free(split);
+			return (NULL);
+		}
+		i++;
+	}
+	split[i] = NULL;
+	return (split);
 }

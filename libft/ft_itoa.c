@@ -3,58 +3,55 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: peiyli <peiyli@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yopeng <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/05 11:55:47 by peiyli            #+#    #+#             */
-/*   Updated: 2025/10/15 15:47:08 by peiyli           ###   ########.fr       */
+/*   Created: 2025/05/05 15:48:07 by yopeng            #+#    #+#             */
+/*   Updated: 2025/05/05 17:00:35 by yopeng           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
-int	ft_nb_digit(long nbr)
+static size_t	str_len(int n)
 {
-	int	i;
+	size_t	str_len;
 
-	if (nbr == 0)
-		return (1);
-	i = 0;
-	if (nbr < 0)
+	str_len = 0;
+	if (n <= 0)
+		str_len++;
+	while (n)
 	{
-		i++;
-		nbr = -nbr;
+		str_len++;
+		n /= 10;
 	}
-	while (nbr > 0)
-	{
-		i++;
-		nbr = nbr / 10;
-	}
-	return (i);
+	return (str_len);
 }
 
 char	*ft_itoa(int n)
 {
-	int		ndigit;
-	long	nbr;
-	char	*new;
+	size_t			len;
+	char			*str;
+	unsigned int	num;
 
-	nbr = (long)n;
-	ndigit = ft_nb_digit(nbr);
-	new = (char *)malloc((ndigit + 1) * sizeof(char));
-	if (new == NULL)
+	len = str_len(n);
+	str = malloc(len + 1);
+	if (!str)
 		return (NULL);
-	new[ndigit] = '\0';
-	if (nbr < 0)
-		nbr = -nbr;
-	while (ndigit > 0)
-	{
-		ndigit--;
-		new[ndigit] = (nbr % 10) + '0';
-		nbr = nbr / 10;
-		if (ndigit == 1 && n < 0)
-			break ;
-	}
+	str[len] = '\0';
 	if (n < 0)
-		new[0] = '-';
-	return (new);
+	{
+		str[0] = '-';
+		num = -n;
+	}
+	else
+		num = n;
+	if (n == 0)
+		str[0] = '0';
+	while (num)
+	{
+		str[--len] = (num % 10) + '0';
+		num /= 10;
+	}
+	return (str);
 }

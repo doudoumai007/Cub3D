@@ -3,52 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: peiyli <peiyli@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yopeng <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/01 14:52:28 by peiyli            #+#    #+#             */
-/*   Updated: 2025/10/15 15:52:09 by peiyli           ###   ########.fr       */
+/*   Created: 2025/05/02 16:36:30 by yopeng            #+#    #+#             */
+/*   Updated: 2025/05/12 16:24:32 by yopeng           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isset(char c, char const *set)
-{
-	int	i;
-
-	i = 0;
-	while (set[i])
-	{
-		if (c == set[i])
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	char	*new;
-	int		i;
-	int		start;	
-	int		end;
+	size_t	start;
+	size_t	end;
+	char	*str;
 
 	if (!s1 || !set)
 		return (NULL);
 	start = 0;
-	while (s1[start] && ft_isset(s1[start], set))
+	while (s1[start] && ft_strchr(set, s1[start]))
 		start++;
-	end = ft_strlen(s1) - 1;
-	while (end > start && ft_isset(s1[end], set))
+	end = ft_strlen(s1);
+	if (end > 0)
 		end--;
-	if (end == 0)
-		return (ft_strdup(""));
-	new = (char *)malloc((end - start + 2) * sizeof(char));
-	if (new == NULL)
-		return (NULL);
-	i = 0;
-	while (start <= end)
-		new[i++] = s1[start++];
-	new[i] = '\0';
-	return (new);
+	while (end > start && ft_strchr(set, s1[end]))
+		end--;
+	str = ft_substr(s1, start, end - start + 1);
+	return (str);
 }

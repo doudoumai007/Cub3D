@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: peiyli <peiyli@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yopeng <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/05 14:49:27 by peiyli            #+#    #+#             */
-/*   Updated: 2025/10/15 15:52:29 by peiyli           ###   ########.fr       */
+/*   Created: 2025/04/30 18:31:51 by yopeng            #+#    #+#             */
+/*   Updated: 2025/04/30 18:36:04 by yopeng           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int	ft_toupper(int c)
 {
 	if (c >= 'a' && c <= 'z')
-		return (c -= 32);
-	else
-		return (c);
+		return (c - 32);
+	return (c);
 }

@@ -3,22 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: peiyli <peiyli@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yopeng <yopeng@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/16 17:53:08 by peiyli            #+#    #+#             */
-/*   Updated: 2025/07/04 16:56:44 by peiyli           ###   ########.fr       */
+/*   Created: 2025/05/15 14:09:11 by yopeng            #+#    #+#             */
+/*   Updated: 2025/08/05 15:21:21 by yopeng           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr(char *str)
+int	ft_putstr(char *str)
 {
+	int	len;
+
 	if (!str)
-		return ;
+		return (ft_putstr("(null)"));
+	len = 0;
 	while (*str)
-	{
-		ft_putchar(*str);
-		str++;
-	}
+		len += write(1, str++, 1);
+	return (len);
 }

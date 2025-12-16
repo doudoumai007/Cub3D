@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: peiyli <peiyli@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yopeng <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/06 11:15:08 by peiyli            #+#    #+#             */
-/*   Updated: 2025/10/15 15:54:02 by peiyli           ###   ########.fr       */
+/*   Created: 2025/05/01 16:00:43 by yopeng            #+#    #+#             */
+/*   Updated: 2025/05/01 16:22:34 by yopeng           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,23 @@
 
 int	ft_atoi(const char *str)
 {
-	int	i;
-	int	sign;
-	int	nbr;
+	int		sign;
+	long	result;
 
-	i = 0;
-	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
-		i++;
 	sign = 1;
-	if (str[i] == '+' || str[i] == '-')
+	result = 0;
+	while (*str == ' ' || (*str >= 9 && *str <= 13))
+		str++;
+	if (*str == '+' || *str == '-')
 	{
-		if (str[i] == '-')
-			sign = -sign;
-		i++;
+		if (*str == '-')
+			sign = -1;
+		str++;
 	}
-	nbr = 0;
-	while (str[i] >= '0' && str[i] <= '9')
+	while (*str >= '0' && *str <= '9')
 	{
-		nbr = 10 * nbr + (str[i] - '0');
-		i++;
+		result = result * 10 + (*str - '0');
+		str++;
 	}
-	return (sign * nbr);
+	return ((int)(sign * result));
 }

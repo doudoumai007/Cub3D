@@ -8,17 +8,28 @@
 
 // }	t_map;
 
-// typedef struct s_texture
-// {
-
-// }	t_texture;
+typedef struct s_texture
+{
+	char	*no_file;
+	char	*so_file;
+	char	*we_file;
+	char	*ea_file;
+	int		f_ok;
+	int		c_ok;
+	int		f_r;
+	int		f_g;
+	int		f_b;
+	int		c_r;
+	int		c_g;
+	int		c_b;
+}	t_texture;
 
 typedef struct s_data
 {
 	void		*mlx;
 	void		*mlx_win;
 //	t_map		*map;
-//	t_texture	*texture;
+	t_texture	*texture;
 //	t_img		*img;
 	int			n_line_file;
 }	t_data;

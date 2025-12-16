@@ -3,27 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: peiyli <peiyli@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yopeng <yopeng@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/16 17:35:46 by peiyli            #+#    #+#             */
-/*   Updated: 2025/07/04 16:55:16 by peiyli           ###   ########.fr       */
+/*   Created: 2025/05/15 14:24:28 by yopeng            #+#    #+#             */
+/*   Updated: 2025/08/05 15:21:50 by yopeng           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr(long long nb)
+int	ft_putnbr(int n)
 {
-	if (nb < 0)
+	long	num;
+	int		len;
+
+	num = n;
+	len = 0;
+	if (num < 0)
 	{
-		ft_putchar('-');
-		nb = -nb;
+		len += ft_putchar('-');
+		num = -num;
 	}
-	if (nb >= 10)
-	{
-		ft_putnbr(nb / 10);
-		ft_putnbr(nb % 10);
-	}
-	else
-		ft_putchar((nb % 10) + '0');
+	if (num >= 10)
+		len += ft_putnbr(num / 10);
+	len += ft_putchar((num % 10) + '0');
+	return (len);
 }
