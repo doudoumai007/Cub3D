@@ -1,0 +1,18 @@
+{
+// ===== 42 School (Norminette) VS Code Settings =====
+
+// 使用真正的 Tab（42 规范要求）
+"editor.insertSpaces": false,
+
+// 一个 Tab 显示为 4 个空格宽度
+"editor.tabSize": 4,
+
+// 禁止 VS Code 自动猜测缩进方式
+"editor.detectIndentation": false,
+
+// 保存时删除行尾多余空格（符合 Norm）
+"files.trimTrailingWhitespace": true,
+
+// 确保文件以空行结尾
+"files.insertFinalNewline": true
+}
