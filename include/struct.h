@@ -1,0 +1,27 @@
+#ifndef STRUCT_H
+# define STRUCT_H
+
+//# include "../mlx_linux/mlx_init.h"
+
+// typedef struct s_map
+// {
+
+// }	t_map;
+
+// typedef struct s_texture
+// {
+
+// }	t_texture;
+
+typedef struct s_data
+{
+	void		*mlx;
+	void		*mlx_win;
+//	t_map		*map;
+//	t_texture	*texture;
+//	t_img		*img;
+	int			n_line_file;
+}	t_data;
+
+
+#endif
