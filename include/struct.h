@@ -24,11 +24,22 @@ typedef struct s_texture
 	int		c_b;
 }	t_texture;
 
+typedef struct s_map
+{
+	char			**map_2d;
+	int				map_height;
+	int				map_width;
+	int				n_player;
+	struct s_player	*player;
+	// t_texture		*textures[4];
+	// bool			minimap_display;
+}	t_map;
+
 typedef struct s_data
 {
 	void		*mlx;
 	void		*mlx_win;
-//	t_map		*map;
+	t_map		*map;
 	t_texture	*texture;
 //	t_img		*img;
 	int			n_line_file;

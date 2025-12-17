@@ -20,6 +20,11 @@ bool	check_file(int fd, char *filename, t_data *data)
 		return (false);
 	if (!parse_texture(fd, data, &n_line))
 		return(perror("Error\nInvalid texture\n"), false);
+	if (!parse_map(fd, data, &n_line, filename))
+		return (false);
+	if (!check_map(data))
+		return (false);
+	return (true);
 }
 
 bool	parsing(char *filename, int ac, t_data *data)
@@ -34,9 +39,13 @@ bool	parsing(char *filename, int ac, t_data *data)
 	if (fd < 0)
 		return (perror("Error\nFile cannot open\n"), false);
 	if (!check_file(fd, filename, data))
+	{
+		if (fd > 0)
+			close(fd);
 		return (false);
+	}
 	if (!check_map_valid(data))
-		return (0);
+		return (false);
 	// check_color();
 	// check_texture();
 	return (true);
