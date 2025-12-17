@@ -4,8 +4,8 @@
 # include <stdbool.h>
 # include <string.h>
 
-# include "parsing.h"
 # include "struct.h"
+# include "parsing.h"
 # include "../libft/libft.h"
 # include "../minilibx-linux/mlx.h"
 

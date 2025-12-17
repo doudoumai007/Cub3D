@@ -15,12 +15,15 @@ bool	check_file(int fd, char *filename, t_data *data)
 {
 	int	n_line;
 
+	(void)filename;
 	n_line = 0;
+	data->n_line_file = ft_get_nb_lines(filename);
 	if (!init_texture(data))
 		return (false);
 	if (!parse_texture(fd, data, &n_line))
 		return(perror("Error\nInvalid texture\n"), false);
-
+//	printf("[DEBUG]: FILL TEXTURE SUCCEED\n");
+	return (true);
 }
 
 bool	parsing(char *filename, int ac, t_data *data)
@@ -36,8 +39,8 @@ bool	parsing(char *filename, int ac, t_data *data)
 		return (perror("Error\nFile cannot open\n"), false);
 	if (!check_file(fd, filename, data))
 		return (false);
-	if (!check_map_valid(data))
-		return (0);
+	// if (!check_map_valid(data))
+	// 	return (0);
 	// check_color();
 	// check_texture();
 	return (true);
