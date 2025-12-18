@@ -13,7 +13,22 @@ bool	check_extension(char *filename)
 
 bool	check_map_character(char **map_2d)
 {
+	int	i;
+	int	j;
 
+	i = 0;
+	while (map_2d[i])
+	{
+		j = 0;
+		while (map_2d[i][j])
+		{
+			if (!ft_strchr("01EWSN ", map_2d[i][j]))
+				return (false);
+			j++;
+		}
+		i++;
+	}
+	return (true);
 }
 
 bool	check_map(t_data *data)
@@ -23,7 +38,7 @@ bool	check_map(t_data *data)
 	if (data->map->n_player > 1)
 		return (perror("Error\nMore than 1 player in the map\n"), false);
 	if (!check_map_character(data->map->map_2d))
-		return (perror("Error\nMore than 1 player in the map\n"), false);
+		return (perror("Error\nInvalid character in the map\n"), false);
 	return (true);
 }
 
