@@ -1,4 +1,4 @@
-NAME = minishell
+NAME = cub3D
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g -Iinclude -Ilibft
@@ -8,6 +8,14 @@ LIBFT = $(LIBFT_DIR)/libft.a
 
 SRC = \
 	src/main.c \
+	src/util.c \
+	src/free.c \
+	src/init_struct.c \
+	src/parsing.c \
+	src/texture.c \
+	src/line.c \
+	src/valid.c \
+
 
 OBJ_DIR = obj
 OBJ = $(SRC:src/%.c=$(OBJ_DIR)/%.o)
@@ -21,7 +29,8 @@ $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
 
 $(OBJ_DIR)/%.o: src/%.c
-	mkdir -p $(OBJ_DIR)/parse $(OBJ_DIR)/src $(OBJ_DIR)/raycasting $(OBJ_DIR)/window
+	mkdir -p $(OBJ_DIR)/src
+#$(OBJ_DIR)/raycasting $(OBJ_DIR)/window $(OBJ_DIR)/parse
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
