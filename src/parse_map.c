@@ -46,7 +46,6 @@ bool	padding_map(t_map *map)
 	int		max_len;
 	int		i;
 
-
 	max_len = get_max_len(map->map_2d);
 	new_2d = map->map_2d;
 	i = 0;
