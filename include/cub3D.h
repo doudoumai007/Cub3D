@@ -2,7 +2,10 @@
 # define	CUB3D_H
 
 # include <stdbool.h>
+# include <stdio.h>
 # include <string.h>
+# include <fcntl.h>
+# include <unistd.h>
 
 # include "struct.h"
 # include "parsing.h"
