@@ -1,47 +1,5 @@
 #include "cub3D.h"
 
-bool	is_map_line(char *line)
-{
-	int	i;
-
-	if (line[0] == '\n')
-		return (false);
-	i = 0;
-	while (line[i] && line[i] != '\n')
-	{
-		if (!ft_strchr("01EWSN ", line[i]))
-			return (false);
-		i++;
-	}
-	return (true);
-}
-
-bool	is_one_player(char *line, t_data *data)
-{
-	int	i;
-
-	i = 0;
-	while (line[i] && line[i] != '\n')
-	{
-		if (ft_strchr("EWSN", line[i]))
-			data->map->n_player++;
-	}
-}
-
-bool	init_map(t_data *data, int n_line)
-{
-	data->map = ft_calloc(1, sizeof(t_map));
-	if (!data->map)
-		return (false);
-	data->map->map_height = data->n_line_file - n_line;
-	data->map->map_width = 0;
-	data->map->n_player = 0;
-	data->map->map_2d = ft_calloc(data->map->map_height + 1, sizeof(char *));
-	if (!data->map->map_2d)
-		return (false);
-	return (true);
-}
-
 int	get_total_lines(char *filename)
 {
 	int		i;
@@ -63,9 +21,53 @@ int	get_total_lines(char *filename)
 	return (i);
 }
 
+bool	fill_map(char *old_line, int fd, t_data *data)
+{
+	int		i;
+	char	*line;
+
+	line = old_line;
+	i = 0;
+	while (line)
+	{
+		if (!ft_strncmp("\n", line, 1))
+			return (false);
+		data->map->map_2d[i] = ft_strdup(line);
+		free(line);
+		line = get_next_line(fd);
+	}
+	return (true);
+}
+
+bool	padding_map(t_map *map)
+{
+	char	**new_2d;
+	char	*tmp;
+	int		max_len;
+	int		i;
+
+
+	max_len = get_max_len(map->map_2d);
+	new_2d = map->map_2d;
+	i = 0;
+	while (new_2d[i])
+	{
+		tmp = ft_calloc(max_len + 1, sizeof(char *));
+		if (!tmp)
+			return(false);
+		ft_memset(tmp, ' ', max_len);
+		ft_copy(tmp, new_2d[i]);
+		free(new_2d[i]);
+		new_2d[i] = tmp;
+		i++;
+	}
+	return (true);
+}
+
 bool	parse_map(int fd, t_data *data, int *n_line, char *filename)
 {
 	char	*line;
+	int		i;
 
 	data->n_line_file = get_total_lines(filename);
 	line = get_next_line(fd);
@@ -79,10 +81,10 @@ bool	parse_map(int fd, t_data *data, int *n_line, char *filename)
 	}
 	if (!init_map(data, *n_line))
 		return (false);
-	while (line)
-	{
-		get_player(data);
-		line = get_next_line(fd);
-	}
+	if (!fill_map(line, fd, data))
+		return (false);
+	if (!padding_map(data->map))
+		return (false);
+	get_player(data);
 	return (true);
 }

@@ -27,3 +27,17 @@ void	init_data(t_data *data)
 	data->map = NULL;
 	data->textures = NULL;
 }
+
+bool	init_map(t_data *data, int n_line)
+{
+	data->map = ft_calloc(1, sizeof(t_map));
+	if (!data->map)
+		return (false);
+	data->map->map_height = data->n_line_file - n_line;
+	data->map->map_width = 0;
+	data->map->n_player = 0;
+	data->map->map_2d = ft_calloc(data->map->map_height + 1, sizeof(char *));
+	if (!data->map->map_2d)
+		return (false);
+	return (true);
+}
