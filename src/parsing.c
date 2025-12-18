@@ -17,15 +17,14 @@ bool	check_file(int fd, char *filename, t_data *data)
 
 	(void)filename;
 	n_line = 0;
-//	data->n_line_file = ft_get_nb_lines(filename);
 	if (!init_texture(data))
 		return (false);
 	if (!parse_texture(fd, data, &n_line))
-		return(perror("Error\nInvalid texture\n"), false);
+		return(write(2, "Error\nInvalid texture\n", 22), false);
 	if (!parse_map(fd, data, &n_line, filename))
 		return (false);
-	if (!check_map(data))
-		return (false);
+	// if (!check_map(data))
+	// 	return (false);
 	return (true);
 }
 
@@ -34,20 +33,20 @@ bool	parsing(char *filename, int ac, t_data *data)
 	int	fd;
 
 	if (ac != 2)
-		return (perror("Error\nInvalid number of arguments\n"), false);
+		return (write(2, "Error\nInvalid number of arguments\n", 34), false);
 	if (!check_extension(filename))
-		return (perror("Error\nInvalid file name or extension\n"), false);
+		return (write(2, "Error\nInvalid file name or extension\n", 37), false);
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
-		return (perror("Error\nFile cannot open\n"), false);
+		return (write(2, "Error\nFile cannot open\n", 23), false);
 	if (!check_file(fd, filename, data))
 	{
 		if (fd > 0)
 			close(fd);
 		return (false);
 	}
-	if (!check_map_valid(data))
-		return (false);
+	// if (!check_map_valid(data))
+	// 	return (false);
 	// check_color();
 	// check_texture();
 	close(fd);

@@ -15,6 +15,8 @@ SRC = \
 	src/texture.c \
 	src/line.c \
 	src/valid.c \
+	src/player.c \
+	src/parse_map.c \
 
 
 OBJ_DIR = obj

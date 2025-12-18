@@ -28,8 +28,13 @@ bool	is_valid_color(char **color_tab);
 bool	is_valid_filename(char *filename, char *ext);
 bool	is_valid_texture(t_textures *textures);
 
+//player
+bool		is_player_char(char c);
+t_vector	*set_player_pos(int i, int j, char c, t_player *player);
+void		get_player(t_data *data);
+
 //main
 bool	parsing(char *filename, int ac, t_data *data);
-bool	parse_map(int fd, t_data *data, int *n_line);
+bool	parse_map(int fd, t_data *data, int *n_line, char *filename);
 
 #endif

@@ -66,10 +66,11 @@ int	get_total_lines(char *filename)
 bool	parse_map(int fd, t_data *data, int *n_line, char *filename)
 {
 	char	*line;
-	char	**map;
 
 	data->n_line_file = get_total_lines(filename);
 	line = get_next_line(fd);
+	if (!line)
+		return (false);
 	while (line && !ft_strncmp("\n", line, 1))
 	{
 		free(line);
@@ -80,7 +81,7 @@ bool	parse_map(int fd, t_data *data, int *n_line, char *filename)
 		return (false);
 	while (line)
 	{
-
+		get_player(data);
 		line = get_next_line(fd);
 	}
 	return (true);
