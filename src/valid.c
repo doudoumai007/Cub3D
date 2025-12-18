@@ -22,16 +22,17 @@ bool	is_valid_filename(char *filename, char *ext)
 	return (true);
 }
 
-bool	is_valid_texture(t_texture *texture)
+bool	is_valid_texture(t_textures *textures)
 {
 	int	valid;
 	int	file_name;
 
-	valid = texture->no_file && texture->so_file && \
-			texture->we_file && texture->ea_file;
-	file_name = is_valid_filename(texture->no_file, ".xpm") && \
-				is_valid_filename(texture->so_file, ".xpm") && \
-				is_valid_filename(texture->we_file, ".xpm") && \
-				is_valid_filename(texture->ea_file, ".xpm");
+	valid = textures->no_file && textures->so_file && \
+			textures->we_file && textures->ea_file && \
+			textures->f_ok && textures->c_ok;
+	file_name = is_valid_filename(textures->no_file, ".xpm") && \
+				is_valid_filename(textures->so_file, ".xpm") && \
+				is_valid_filename(textures->we_file, ".xpm") && \
+				is_valid_filename(textures->ea_file, ".xpm");
 	return (valid && file_name);
 }

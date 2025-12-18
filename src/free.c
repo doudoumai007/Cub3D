@@ -12,3 +12,50 @@ void	free_tab(char **table)
 	}
 	free(table);
 }
+
+void	free_texture(t_textures *textures)
+{
+	if (textures->no_file)
+		free(textures->no_file);
+	if (textures->so_file)
+		free(textures->so_file);
+	if (textures->we_file)
+		free(textures->we_file);
+	if (textures->ea_file)
+		free(textures->ea_file);
+	free(textures);
+}
+
+void	free_player(t_player *player)
+{
+	if (player->current_position)
+		free(player->current_position);
+	if (player->start_position)
+		free(player->start_position);
+	free (player);
+}
+
+// void	free_text_tab(t_data *data)
+// {
+//}
+
+void	free_data(t_data *data)
+{
+	if (!data)
+		return ;
+	// free_texture_tab(data);
+	// if (data->mlx)
+	// {
+	// }
+	if (data->textures)
+		free_texture(data->textures);
+	if (data->map)
+	{
+		if (data->map->player)
+			free_player(data->map->player);
+		if (data->map->map_2d)
+			free_tab(data->map->map_2d);
+		free(data->map);
+	}
+	free(data);
+}
