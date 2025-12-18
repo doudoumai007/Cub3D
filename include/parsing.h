@@ -11,11 +11,15 @@ bool	parse_texture(int fd, t_data *data, int	*n_line);
 char	*get_next_line_trim(int fd);
 
 //initial
+bool	init_texture(t_data *data);
 void	init_data(t_data *data);
+bool	init_map(t_data *data, int n_line);
 
 //util
-int	ft_strcmp(const char *s1, const char *s2);
-int	ft_isnumeric(char *str);
+int		ft_strcmp(const char *s1, const char *s2);
+int		ft_isnumeric(char *str);
+int		get_max_len(char **map_2d)
+void	ft_copy(char *dest, char *src);
 
 //free
 void	free_tab(char **table);
@@ -30,6 +34,6 @@ bool	is_valid_texture(t_textures *textures);
 
 //main
 bool	parsing(char *filename, int ac, t_data *data);
-bool	parse_map(int fd, t_data *data, int *n_line);
+bool	parse_map(int fd, t_data *data, int *n_line, char *filename);
 
 #endif

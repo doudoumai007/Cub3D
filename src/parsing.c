@@ -11,13 +11,28 @@ bool	check_extension(char *filename)
 	return (true);
 }
 
+bool	check_map_character(char **map_2d)
+{
+
+}
+
+bool	check_map(t_data *data)
+{
+	if (!data->map->n_player)
+		return (perror("Error\nNo player in the map\n"), false);
+	if (data->map->n_player > 1)
+		return (perror("Error\nMore than 1 player in the map\n"), false);
+	if (!check_map_character(data->map->map_2d))
+		return (perror("Error\nMore than 1 player in the map\n"), false);
+	return (true);
+}
+
 bool	check_file(int fd, char *filename, t_data *data)
 {
 	int	n_line;
 
 	(void)filename;
 	n_line = 0;
-//	data->n_line_file = ft_get_nb_lines(filename);
 	if (!init_texture(data))
 		return (false);
 	if (!parse_texture(fd, data, &n_line))

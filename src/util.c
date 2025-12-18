@@ -23,3 +23,31 @@ int	ft_isnumeric(char *str)
 	}
 	return(1);
 }
+
+int	get_max_len(char **map_2d)
+{
+	int	i;
+	int	max;
+
+	i = 0;
+	max = 0;
+	while (map_2d[i])
+	{
+		if (ft_strlen(map_2d[i]) > max)
+			max = ft_strlen(map_2d[i]);
+		i++;
+	}
+	return (max);
+}
+
+void	ft_copy(char *dest, char *src)
+{
+	int	i;
+
+	i = 0;
+	while (src[i])
+	{
+		dest[i] = src[i];
+		i++;
+	}
+}
