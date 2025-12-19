@@ -99,9 +99,9 @@ bool	check_file(int fd, char *filename, t_data *data)
 		return (false);
 	if (!parse_texture(fd, data, &n_line))
 		return(write(2, "Error\nInvalid texture\n", 22), false);
-	if (!check_texture(data))
-		return(false);
-	if (!parse_map(fd, data, &n_line, filename))
+//	if (!check_texture(data))
+//		return(false);
+	if (!parse_map(fd, data, &n_line))
 		return (false);
 	if (!check_map(data))
 		return (false);
