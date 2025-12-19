@@ -1,0 +1,58 @@
+#include "cub3D.h"
+
+bool	texture_ok(t_textures *textures)
+{
+	int	*tmp_fd;
+	int	count;
+	int	i;
+
+	tmp_fd = malloc(sizeof(int) * 4);
+	if (!tmp_fd)
+		return (false);
+	tmp_fd[0] = open(textures->no_file, O_RDONLY);
+	tmp_fd[1] = open(textures->so_file, O_RDONLY);
+	tmp_fd[2] = open(textures->we_file, O_RDONLY);
+	tmp_fd[3] = open(textures->ea_file, O_RDONLY);
+	i = 0;
+	count = 0;
+	while(i < 4)
+	{
+		if (tmp_fd[i] != -1)
+		{
+			count++;
+			close(tmp_fd[i]);
+		}
+		i++;
+	}
+	free(tmp_fd);
+	return(count == 4);
+}
+
+bool	color_not_ok(t_textures *textures)
+{
+	int	color;
+
+	color = textures->f_ok == 0 || textures->c_ok == 0 ||\
+			textures->f_r < 0 || textures->f_r > 255 ||\
+			textures->f_g < 0 || textures->f_g > 255 ||\
+			textures->f_b < 0 || textures->f_b > 255 ||\
+			textures->c_r < 0 || textures->c_r > 255 ||\
+			textures->c_g < 0 || textures->c_g > 255 ||\
+			textures->c_b < 0 || textures->c_b > 255;
+	return (color);
+}
+
+bool	check_texture(t_data *data)
+{
+	if (!texture_ok(data->textures))
+	{
+		write(2, "Error\nProblem with texture\n", 27);
+		return (false);
+	}
+	if (color_not_ok(data->textures))
+	{
+		write(2, "Error\nProblem with color\n", 25);
+		return (false);
+	}
+	return (true);
+}
