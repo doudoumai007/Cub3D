@@ -34,28 +34,6 @@ bool	check_map_character(char **map_2d)
 	return (true);
 }
 
-bool	flood_fill(t_map *map, int x, int y)
-{
-	char **map_2d;
-
-	map_2d = map->map_2d;
-	if (!x || !y || x == map->map_width - 1 || y == map->map_height - 1 \
-		|| map_2d[x][y] == ' ')
-		return (false);
-	if (map_2d[x][y] == '1' || map_2d[x][y] == 'V')
-		return (true);
-	map_2d[x][y] = 'V';
-	if (flood_fill(map, x - 1, y))
-		return (false);
-	if (flood_fill(map, x + 1, y))
-		return (false);
-	if (flood_fill(map, x, y - 1))
-		return (false);
-	if (flood_fill(map, x, y + 1))
-		return (false);
-	return (true);
-}
-
 void	debug_map(char **map)
 {
 	int	i = 0;
@@ -74,17 +52,86 @@ void	debug_map(char **map)
 	}
 }
 
+bool	flood_fill(t_map *map, char **map_2d, int x, int y)
+{
+	if (map_2d[x][y] == '1' || map_2d[x][y] == 'V')
+		return (true);
+	if (x < 0 || y < 0|| x >= map->map_height || y >= map->map_width \
+		|| map_2d[x][y] == ' ')
+	{
+		// printf("[DEBUG] x:%d y:%d c:%c\n", x, y, map_2d[x][y]);
+		return (false);
+	}
+	map_2d[x][y] = 'V';
+	if (!flood_fill(map, map_2d, x - 1, y))
+		return (false);
+	if (!flood_fill(map, map_2d, x + 1, y))
+		return (false);
+	if (!flood_fill(map, map_2d, x, y - 1))
+		return (false);
+	if (!flood_fill(map, map_2d, x, y + 1))
+		return (false);
+	return (true);
+}
+
+void	free_map(char **map)
+{
+	int	i;
+
+	if (!map)
+		return ;
+	i = 0;
+	while (map[i])
+		free(map[i++]);
+	free(map);
+}
+
+char	**dup_map(t_map *map)
+{
+	char	**copy;
+	int		i;
+
+	copy = malloc(sizeof(char *) * (map->map_height + 1));
+	if (!copy)
+		return (NULL);
+	i = 0;
+	while (i < map->map_height)
+	{
+		copy[i] = ft_strdup(map->map_2d[i]);
+		if (!copy[i])
+		{
+			free_map(copy);
+			return (NULL);
+		}
+		i++;
+	}
+	copy[map->map_height] = NULL;
+	return (copy);
+}
+
 bool	check_map(t_data *data)
 {
+	char	**copy;
+
 	// debug_map(data->map->map_2d);
+	// printf("[DEBUG]: height %d\n", data->map->map_height);
+	// printf("[DEBUG]: width %d\n", data->map->map_width);
+	copy = dup_map(data->map);
+	if (!copy)
+		return (false);
 	if (!data->map->n_player)
 		return (write(2, "Error\nNo player in the map\n", 28), false);
 	if (data->map->n_player > 1)
 		return (write(2, "Error\nMore than 1 player in the map\n", 37), false);
 	if (!check_map_character(data->map->map_2d))
 		return (write(2, "Error\nInvalid character in the map\n", 36), false);
-	if (!flood_fill(data->map, data->map->player_x, data->map->player_y))
+	if (!flood_fill(data->map, copy, data->map->player_x, data->map->player_y))
+	{
+		free_map(copy);
 		return (write(2, "Error\nMap unclosed\n", 20), false);
+	}
+	// debug_map(copy);
+	free_map(copy);
 	return (true);
 }
 
@@ -92,16 +139,15 @@ bool	check_file(int fd, char *filename, t_data *data)
 {
 	int	n_line;
 
-	(void)filename;
 	data->n_line_file = get_total_lines(filename);
 	n_line = 0;
 	if (!init_texture(data))
 		return (false);
 	if (!parse_texture(fd, data, &n_line))
 		return(write(2, "Error\nInvalid texture\n", 22), false);
-	if (!check_texture(data))
-		return(false);
-	if (!parse_map(fd, data, &n_line, filename))
+	// if (!check_texture(data))
+	// 	return(false);
+	if (!parse_map(fd, data, &n_line))
 		return (false);
 	if (!check_map(data))
 		return (false);

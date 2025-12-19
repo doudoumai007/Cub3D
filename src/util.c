@@ -56,7 +56,7 @@ int	get_max_len(char **map_2d)
 			max = ft_strlen(map_2d[i]) + 1;
 		i++;
 	}
-	printf("[DEBUG]: maxlen = %d\n", max);
+	// printf("[DEBUG]: maxlen = %d\n", max);
 	return (max);
 }
 
