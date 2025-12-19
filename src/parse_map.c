@@ -32,7 +32,7 @@ bool	fill_map(char *old_line, int fd, t_data *data)
 	{
 		if (!ft_strncmp("\n", line, 1))
 		{
-			printf("[DEBUG]: empty line in map\n");
+			write(2, "Error\nEmpty line in map\n", 24);
 			return (false);
 		}
 		data->map->map_2d[i++] = ft_strdup_trim(line);

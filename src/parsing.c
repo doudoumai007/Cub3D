@@ -23,33 +23,12 @@ bool	check_map_character(char **map_2d)
 		while (map_2d[i][j])
 		{
 			if (!ft_strchr("01EWSN ", map_2d[i][j]))
-			{
-				write(2, "Error\nWrong character in map\n", 29);
 				return (false);
-			}
 			j++;
 		}
 		i++;
 	}
 	return (true);
-}
-
-void	debug_map(char **map)
-{
-	int	i = 0;
-
-	printf("[DEBUG MAP]\n");
-	while (map[i])
-	{
-		int j = 0;
-		while (map[i][j])
-		{
-			printf("%c", map[i][j]);
-			j++;
-		}
-		printf("\n");
-		i++;
-	}
 }
 
 bool	flood_fill(t_map *map, char **map_2d, int x, int y)
