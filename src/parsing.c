@@ -23,7 +23,10 @@ bool	check_map_character(char **map_2d)
 		while (map_2d[i][j])
 		{
 			if (!ft_strchr("01EWSN ", map_2d[i][j]))
+			{
+				printf("[DEBUG]: wrong character %c", map_2d[i][j]);
 				return (false);
+			}
 			j++;
 		}
 		i++;
@@ -53,16 +56,35 @@ bool	flood_fill(t_map *map, int x, int y)
 	return (true);
 }
 
+void	debug_map(char **map)
+{
+	int	i = 0;
+
+	printf("[DEBUG MAP]\n");
+	while (map[i])
+	{
+		int j = 0;
+		while (map[i][j])
+		{
+			printf("%c", map[i][j]);
+			j++;
+		}
+		printf("\n");
+		i++;
+	}
+}
+
 bool	check_map(t_data *data)
 {
+	debug_map(data->map->map_2d);
 	if (!data->map->n_player)
-		return (perror("Error\nNo player in the map\n"), false);
+		return (write(2, "Error\nNo player in the map\n", 28), false);
 	if (data->map->n_player > 1)
-		return (perror("Error\nMore than 1 player in the map\n"), false);
+		return (write(2, "Error\nMore than 1 player in the map\n", 37), false);
 	if (!check_map_character(data->map->map_2d))
-		return (perror("Error\nInvalid character in the map\n"), false);
+		return (write(2, "Error\nInvalid character in the map\n", 36), false);
 	if (!flood_fill(data->map, data->map->player_x, data->map->player_y))
-		return (perror("Error\nMap unclosed\n"), false);
+		return (write(2, "Error\nMap unclosed\n", 20), false);
 	return (true);
 }
 

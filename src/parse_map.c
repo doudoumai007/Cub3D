@@ -35,7 +35,8 @@ bool	fill_map(char *old_line, int fd, t_data *data)
 			printf("[DEBUG]: empty line in map\n");
 			return (false);
 		}
-		data->map->map_2d[i++] = ft_strdup(line);
+		// printf("%s", line);
+		data->map->map_2d[i++] = ft_strdup_trim(line);
 		free(line);
 		line = get_next_line(fd);
 	}
@@ -60,7 +61,8 @@ bool	padding_map(t_map *map)
 		ft_memset(tmp, ' ', max_len);
 		ft_copy(tmp, new_2d[i]);
 		free(new_2d[i]);
-		new_2d[i] = tmp;
+		new_2d[i] = ft_strdup(tmp);
+		free(tmp);
 		i++;
 	}
 	return (true);
@@ -73,7 +75,10 @@ bool	parse_map(int fd, t_data *data, int *n_line, char *filename)
 	data->n_line_file = get_total_lines(filename);
 	line = get_next_line(fd);
 	if (!line)
+	{
+		printf("[DEBUG]:read line failed\n");
 		return (false);
+	}
 	while (line && !ft_strncmp("\n", line, 1))
 	{
 		free(line);
