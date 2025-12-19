@@ -18,7 +18,7 @@ bool	init_map(t_data *data, int n_line);
 //util
 int		ft_strcmp(const char *s1, const char *s2);
 int		ft_isnumeric(char *str);
-int		get_max_len(char **map_2d)
+int		get_max_len(char **map_2d);
 void	ft_copy(char *dest, char *src);
 
 //free
