@@ -56,4 +56,5 @@ void	get_player(t_data *data)
 		}
 		i++;
 	}
+	printf("[DEBUG]:player number: %d\n", data->map->n_player);
 }

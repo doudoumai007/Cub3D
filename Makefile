@@ -25,7 +25,7 @@ OBJ = $(SRC:src/%.c=$(OBJ_DIR)/%.o)
 all: $(LIBFT) $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -lm -o $(NAME)
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
