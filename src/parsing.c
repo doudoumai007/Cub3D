@@ -99,7 +99,9 @@ bool	check_file(int fd, char *filename, t_data *data)
 		return (false);
 	if (!parse_texture(fd, data, &n_line))
 		return(write(2, "Error\nInvalid texture\n", 22), false);
-	if (!parse_map(fd, data, &n_line))
+	if (!check_texture(data))
+		return(false);
+	if (!parse_map(fd, data, &n_line, filename))
 		return (false);
 	if (!check_map(data))
 		return (false);
@@ -123,10 +125,6 @@ bool	parsing(char *filename, int ac, t_data *data)
 			close(fd);
 		return (false);
 	}
-	// if (!check_map_valid(data))
-	// 	return (false);
-	// check_color();
-	// check_texture();
 	close(fd);
 	return (true);
 }

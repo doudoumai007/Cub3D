@@ -41,6 +41,11 @@ bool		is_player_char(char c);
 t_vector	*set_player_pos(int i, int j, char c, t_player *player);
 void		get_player(t_data *data);
 
+//check_texture
+bool	texture_ok(t_textures *textures);
+bool	color_ok(t_textures *textures);
+bool	check_texture(t_data *data);
+
 //main
 bool	parsing(char *filename, int ac, t_data *data);
 bool	parse_map(int fd, t_data *data, int *n_line);
