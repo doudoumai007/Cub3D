@@ -35,7 +35,6 @@ bool	fill_map(char *old_line, int fd, t_data *data)
 			printf("[DEBUG]: empty line in map\n");
 			return (false);
 		}
-		// printf("%s", line);
 		data->map->map_2d[i++] = ft_strdup_trim(line);
 		free(line);
 		line = get_next_line(fd);
@@ -68,11 +67,10 @@ bool	padding_map(t_map *map)
 	return (true);
 }
 
-bool	parse_map(int fd, t_data *data, int *n_line, char *filename)
+bool	parse_map(int fd, t_data *data, int *n_line)
 {
 	char	*line;
 
-	data->n_line_file = get_total_lines(filename);
 	line = get_next_line(fd);
 	if (!line)
 	{
