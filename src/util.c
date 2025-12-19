@@ -10,6 +10,25 @@ int	ft_strcmp(const char *s1, const char *s2)
 	return (*(unsigned char *)s1 - *(unsigned char *)s2);
 }
 
+char	*ft_strdup_trim(char *line)
+{
+	char	*new;
+	int		i;
+
+	if (!line)
+		return (NULL);
+	new = ft_calloc(ft_strlen(line), sizeof(char));
+	if (!new)
+		return (NULL);
+	i = 0;
+	while (line[i] && line[i] != '\n')
+	{
+		new[i] = line[i];
+		i++;
+	}
+	return (new);
+}
+
 int	ft_isnumeric(char *str)
 {
 	int	i;
@@ -34,9 +53,10 @@ int	get_max_len(char **map_2d)
 	while (map_2d[i])
 	{
 		if ((int)ft_strlen(map_2d[i]) > max)
-			max = ft_strlen(map_2d[i]);
+			max = ft_strlen(map_2d[i]) + 1;
 		i++;
 	}
+	printf("[DEBUG]: maxlen = %d\n", max);
 	return (max);
 }
 

@@ -56,6 +56,8 @@ typedef struct s_map
 	int			map_height;
 	int			map_width;
 	int			n_player;
+	int			player_x;
+	int			player_y;
 	t_player	*player;
 	t_texture	*textures[4];
 	bool		minimap_display;
