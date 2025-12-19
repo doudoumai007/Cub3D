@@ -24,7 +24,7 @@ bool	check_map_character(char **map_2d)
 		{
 			if (!ft_strchr("01EWSN ", map_2d[i][j]))
 			{
-				printf("[DEBUG]: wrong character %c", map_2d[i][j]);
+				write(2, "Error\nWrong character in map\n", 29);
 				return (false);
 			}
 			j++;
@@ -56,24 +56,6 @@ bool	flood_fill(t_map *map, int x, int y)
 	return (true);
 }
 
-void	debug_map(char **map)
-{
-	int	i = 0;
-
-	printf("[DEBUG MAP]\n");
-	while (map[i])
-	{
-		int j = 0;
-		while (map[i][j])
-		{
-			printf("%c", map[i][j]);
-			j++;
-		}
-		printf("\n");
-		i++;
-	}
-}
-
 bool	check_map(t_data *data)
 {
 	// debug_map(data->map->map_2d);
@@ -92,15 +74,14 @@ bool	check_file(int fd, char *filename, t_data *data)
 {
 	int	n_line;
 
-	(void)filename;
 	data->n_line_file = get_total_lines(filename);
 	n_line = 0;
 	if (!init_texture(data))
 		return (false);
 	if (!parse_texture(fd, data, &n_line))
 		return(write(2, "Error\nInvalid texture\n", 22), false);
-//	if (!check_texture(data))
-//		return(false);
+	// if (!check_texture(data))
+	// 	return(false);
 	if (!parse_map(fd, data, &n_line))
 		return (false);
 	if (!check_map(data))

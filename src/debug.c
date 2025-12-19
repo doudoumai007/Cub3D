@@ -25,3 +25,21 @@
 // 	}
 // 	free(s);
 // }
+
+// void	debug_map(char **map)
+// {
+// 	int	i = 0;
+
+// 	printf("[DEBUG MAP]\n");
+// 	while (map[i])
+// 	{
+// 		int j = 0;
+// 		while (map[i][j])
+// 		{
+// 			printf("%c", map[i][j]);
+// 			j++;
+// 		}
+// 		printf("\n");
+// 		i++;
+// 	}
+// }

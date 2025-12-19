@@ -46,7 +46,7 @@ bool	check_texture(t_data *data)
 {
 	if (!texture_ok(data->textures))
 	{
-		write(2, "Error\nProblem with texture\n", 27);
+		write(2, "Error\nCannot open texture\n", 26);
 		return (false);
 	}
 	if (color_not_ok(data->textures))
