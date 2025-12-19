@@ -15,6 +15,9 @@ bool	init_texture(t_data *data);
 void	init_data(t_data *data);
 bool	init_map(t_data *data, int n_line);
 
+//parse map
+int		get_total_lines(char *filename);
+
 //util
 int		ft_strcmp(const char *s1, const char *s2);
 char	*ft_strdup_trim(char *line);
@@ -45,6 +48,6 @@ bool	check_texture(t_data *data);
 
 //main
 bool	parsing(char *filename, int ac, t_data *data);
-bool	parse_map(int fd, t_data *data, int *n_line, char *filename);
+bool	parse_map(int fd, t_data *data, int *n_line);
 
 #endif

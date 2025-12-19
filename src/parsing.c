@@ -76,7 +76,7 @@ void	debug_map(char **map)
 
 bool	check_map(t_data *data)
 {
-	debug_map(data->map->map_2d);
+	// debug_map(data->map->map_2d);
 	if (!data->map->n_player)
 		return (write(2, "Error\nNo player in the map\n", 28), false);
 	if (data->map->n_player > 1)
@@ -93,6 +93,7 @@ bool	check_file(int fd, char *filename, t_data *data)
 	int	n_line;
 
 	(void)filename;
+	data->n_line_file = get_total_lines(filename);
 	n_line = 0;
 	if (!init_texture(data))
 		return (false);
