@@ -24,7 +24,7 @@ bool	check_map_character(char **map_2d)
 		{
 			if (!ft_strchr("01EWSN ", map_2d[i][j]))
 			{
-				printf("[DEBUG]: wrong character %c", map_2d[i][j]);
+				write(2, "Error\nWrong character in map\n", 29);
 				return (false);
 			}
 			j++;

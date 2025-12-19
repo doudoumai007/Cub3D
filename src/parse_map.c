@@ -74,10 +74,7 @@ bool	parse_map(int fd, t_data *data, int *n_line)
 
 	line = get_next_line(fd);
 	if (!line)
-	{
-		printf("[DEBUG]:read line failed\n");
 		return (false);
-	}
 	while (line && !ft_strncmp("\n", line, 1))
 	{
 		free(line);

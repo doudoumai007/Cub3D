@@ -18,7 +18,7 @@ SRC = \
 	src/player.c \
 	src/parse_map.c \
 	src/check_texture.c \
-
+	src/debug.c \
 
 OBJ_DIR = obj
 OBJ = $(SRC:src/%.c=$(OBJ_DIR)/%.o)
