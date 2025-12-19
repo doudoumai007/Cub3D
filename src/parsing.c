@@ -31,6 +31,28 @@ bool	check_map_character(char **map_2d)
 	return (true);
 }
 
+bool	flood_fill(t_map *map, int x, int y)
+{
+	char **map_2d;
+
+	map_2d = map->map_2d;
+	if (!x || !y || x == map->map_width - 1 || y == map->map_height - 1 \
+		|| map_2d[x][y] == ' ')
+		return (false);
+	if (map_2d[x][y] == '1' || map_2d[x][y] == 'V')
+		return (true);
+	map_2d[x][y] = 'V';
+	if (flood_fill(map, x - 1, y))
+		return (false);
+	if (flood_fill(map, x + 1, y))
+		return (false);
+	if (flood_fill(map, x, y - 1))
+		return (false);
+	if (flood_fill(map, x, y + 1))
+		return (false);
+	return (true);
+}
+
 bool	check_map(t_data *data)
 {
 	if (!data->map->n_player)
@@ -39,6 +61,8 @@ bool	check_map(t_data *data)
 		return (perror("Error\nMore than 1 player in the map\n"), false);
 	if (!check_map_character(data->map->map_2d))
 		return (perror("Error\nInvalid character in the map\n"), false);
+	if (!flood_fill(data->map, data->map->player_x, data->map->player_y))
+		return (perror("Error\nMap unclosed\n"), false);
 	return (true);
 }
 
@@ -54,8 +78,8 @@ bool	check_file(int fd, char *filename, t_data *data)
 		return(write(2, "Error\nInvalid texture\n", 22), false);
 	if (!parse_map(fd, data, &n_line, filename))
 		return (false);
-	// if (!check_map(data))
-	// 	return (false);
+	if (!check_map(data))
+		return (false);
 	return (true);
 }
 

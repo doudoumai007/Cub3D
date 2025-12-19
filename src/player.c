@@ -50,6 +50,8 @@ void	get_player(t_data *data)
 				set_player_pos(i , j, data->map->map_2d[i][j], \
 					data->map->player);
 					data->map->n_player++;
+					data->map->player_x = i;
+					data->map->player_y = j;
 					data->map->map_2d[i][j] = '0';
 			}
 			j++;
