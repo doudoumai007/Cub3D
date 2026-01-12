@@ -33,14 +33,15 @@ bool	check_map_character(char **map_2d)
 
 bool	flood_fill(t_map *map, char **map_2d, int x, int y)
 {
-	if (map_2d[x][y] == '1' || map_2d[x][y] == 'V')
-		return (true);
+	//先判断x和y是否有效，然后再读取map_2d[x][y],否则会出现segfault
 	if (x < 0 || y < 0|| x >= map->map_height || y >= map->map_width \
 		|| map_2d[x][y] == ' ')
 	{
-		// printf("[DEBUG] x:%d y:%d c:%c\n", x, y, map_2d[x][y]);
+//		printf("[DEBUG] x:%d y:%d c:%c\n", x, y, map_2d[x][y]);
 		return (false);
 	}
+	if (map_2d[x][y] == '1' || map_2d[x][y] == 'V')
+		return (true);
 	map_2d[x][y] = 'V';
 	if (!flood_fill(map, map_2d, x - 1, y))
 		return (false);
@@ -124,8 +125,8 @@ bool	check_file(int fd, char *filename, t_data *data)
 		return (false);
 	if (!parse_texture(fd, data, &n_line))
 		return(write(2, "Error\nInvalid texture\n", 22), false);
-	// if (!check_texture(data))
-	// 	return(false);
+	if (!check_texture(data))
+		return(false);
 	if (!parse_map(fd, data, &n_line))
 		return (false);
 	if (!check_map(data))

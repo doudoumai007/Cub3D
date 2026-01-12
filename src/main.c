@@ -13,11 +13,11 @@ int	main(int ac, char **av)
 		free_data(data);
 		return(1);
 	}
-//	if (!create_window())
-	// {
-	// 	free_data(data);
-	// 	return(1);
-	// }
+	if (!create_window(data))
+	{
+	 	free_data(data);
+	 	return(1);
+	}
 	free_data(data);
 	return (0);
 }

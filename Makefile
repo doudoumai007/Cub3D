@@ -7,18 +7,19 @@ LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
 SRC = \
-	src/main.c \
-	src/util.c \
-	src/free.c \
-	src/init_struct.c \
-	src/parsing.c \
-	src/texture.c \
-	src/line.c \
-	src/valid.c \
-	src/player.c \
-	src/parse_map.c \
-	src/check_texture.c \
-	src/debug.c \
+	src/parsing/main.c \
+	src/parsing/util.c \
+	src/parsing/free.c \
+	src/parsing/init_struct.c \
+	src/parsing/parsing.c \
+	src/parsing/texture.c \
+	src/parsing/line.c \
+	src/parsing/valid.c \
+	src/parsing/player.c \
+	src/parsing/parse_map.c \
+	src/parsing/check_texture.c \
+	src/parsing/debug.c \
+	src/window/create_window.c \
 
 OBJ_DIR = obj
 OBJ = $(SRC:src/%.c=$(OBJ_DIR)/%.o)

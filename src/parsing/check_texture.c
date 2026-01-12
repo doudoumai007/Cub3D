@@ -54,5 +54,6 @@ bool	check_texture(t_data *data)
 		write(2, "Error\nProblem with color\n", 25);
 		return (false);
 	}
+//	printf("[DEBUG]:check_texture ok\n");
 	return (true);
 }

@@ -10,6 +10,7 @@
 
 # include "struct.h"
 # include "parsing.h"
+# include "graphic.h"
 # include "../libft/libft.h"
 # include "../minilibx-linux/mlx.h"
 
