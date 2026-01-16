@@ -69,7 +69,7 @@ typedef struct s_data
 	void		*mlx_win;
 	t_textures	*textures;
 	t_map		*map;
-//	t_img		*img;
+	t_img		*img;
 	int			n_line_file;
 }	t_data;
 

@@ -19,7 +19,9 @@ SRC = \
 	src/parsing/parse_map.c \
 	src/parsing/check_texture.c \
 	src/parsing/debug.c \
-	src/window/create_window.c \
+	src/window/window.c \
+	src/window/texture.c \
+	src/window/key.c \
 
 OBJ_DIR = obj
 OBJ = $(SRC:src/%.c=$(OBJ_DIR)/%.o)
@@ -33,8 +35,8 @@ $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
 
 $(OBJ_DIR)/%.o: src/%.c
-	mkdir -p $(OBJ_DIR)/src
-#$(OBJ_DIR)/raycasting $(OBJ_DIR)/window $(OBJ_DIR)/parse
+	mkdir -p $(OBJ_DIR)/window $(OBJ_DIR)/parsing
+#$(OBJ_DIR)/raycasting 
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:

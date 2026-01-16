@@ -21,5 +21,4 @@
 # define TEXTURE_WE 2
 # define TEXTURE_EA 3
 
-
 #endif

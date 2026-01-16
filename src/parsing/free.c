@@ -35,18 +35,37 @@ void	free_player(t_player *player)
 	free (player);
 }
 
-// void	free_text_tab(t_data *data)
-// {
-//}
+void	free_texture_tab(t_data *data)
+{
+	int	i;
+
+	i = 0;
+	while (i < 4 && data->map)
+	{
+		if (data->map->textures[i])
+		{
+			if (data->map->textures[i]->img)
+				mlx_destroy_image(data->mlx, data->map->textures[i]->img);
+			free(data->map->textures[i]);
+		}
+		i++;
+	}
+}
 
 void	free_data(t_data *data)
 {
 	if (!data)
 		return ;
-	// free_texture_tab(data);
-	// if (data->mlx)
-	// {
-	// }
+	free_texture_tab(data);
+	if (data->mlx)
+	{
+		if (data->img)
+			mlx_destroy_image(data->mlx, data->img);
+		if (data->mlx_win)
+			mlx_destroy_window(data->mlx, data->mlx_win);
+		mlx_destroy_display(data->mlx);
+		free(data->mlx);
+	}
 	if (data->textures)
 		free_texture(data->textures);
 	if (data->map)
