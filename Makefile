@@ -22,7 +22,10 @@ SRC = \
 	src/parsing/parse_map.c \
 	src/parsing/check_texture.c \
 	src/parsing/debug.c \
+	src/raycasting/draw_3d.c \
+	src/raycasting/wall.c \
 	src/window/window.c \
+	src/window/draw_screen.c \
 	src/window/texture.c \
 	src/window/key.c \
 	src/raycasting/raycasting.c \
