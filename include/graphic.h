@@ -21,3 +21,14 @@ void	texture_loaded(t_data *data, t_texture **t, char *filename);
 int	close_window(t_data *data);
 int	key_press(int keycode, t_data *data);
 int	key_release(int keycode, t_data *data);
+
+//raycasting
+void	render_3d_view(t_data *data);
+
+//wall.c
+float	calculate_wall_dist(t_ray_casting *rc);
+float	normalize_angle_diff(float angle_diff);
+void	calculate_wall_properties(t_ray_casting *rc, t_data *data);
+
+//draw_screen.c
+void	raycasting(t_data *data);

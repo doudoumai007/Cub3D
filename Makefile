@@ -19,7 +19,10 @@ SRC = \
 	src/parsing/parse_map.c \
 	src/parsing/check_texture.c \
 	src/parsing/debug.c \
+	src/raycasting/draw_3d.c \
+	src/raycasting/wall.c \
 	src/window/window.c \
+	src/window/draw_screen.c \
 	src/window/texture.c \
 	src/window/key.c \
 
@@ -36,7 +39,7 @@ $(LIBFT):
 
 $(OBJ_DIR)/%.o: src/%.c
 	mkdir -p $(OBJ_DIR)/window $(OBJ_DIR)/parsing
-#$(OBJ_DIR)/raycasting 
+#$(OBJ_DIR)/raycasting
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
