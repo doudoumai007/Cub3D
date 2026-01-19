@@ -13,6 +13,7 @@ char	*get_next_line_trim(int fd);
 //initial
 bool	init_texture(t_data *data);
 void	init_data(t_data *data);
+void	init_player(t_data *data);
 bool	init_map(t_data *data, int n_line);
 
 //parse map
@@ -43,7 +44,7 @@ void		get_player(t_data *data);
 
 //check_texture
 bool	texture_ok(t_textures *textures);
-bool	color_ok(t_textures *textures);
+bool	color_not_ok(t_textures *textures);
 bool	check_texture(t_data *data);
 
 //main
