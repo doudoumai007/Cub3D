@@ -28,7 +28,7 @@ void	init_data(t_data *data)
 	data->textures = NULL;
 }
 
-void	init_player(t_data *data)
+bool	init_player(t_data *data)
 {
 	data->map->player = ft_calloc(1, sizeof(t_player));
 	if (!data->map->player)
@@ -44,6 +44,7 @@ void	init_player(t_data *data)
 	data->map->player->move_right = 0;
 	data->map->player->rotate_left = 0;
 	data->map->player->rotate_right = 0;
+	return (true);
 }
 
 bool	init_map(t_data *data, int n_line)

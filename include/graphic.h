@@ -21,3 +21,10 @@ void	texture_loaded(t_data *data, t_texture **t, char *filename);
 int	close_window(t_data *data);
 int	key_press(int keycode, t_data *data);
 int	key_release(int keycode, t_data *data);
+
+//raycasting
+void	raycasting(t_data *data);
+void	init_step_distance(t_ray_casting *rc);
+void	init_ray_casting(t_ray_casting *rc, t_data *data, int i);
+void	perform_dda(t_ray_casting *rc, t_data *data);
+

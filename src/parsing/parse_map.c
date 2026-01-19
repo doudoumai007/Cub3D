@@ -87,7 +87,8 @@ bool	parse_map(int fd, t_data *data, int *n_line)
 		return (false);
 	if (!padding_map(data->map))
 		return (false);
-	init_player(data);
+	if (!init_player(data))
+		return (false);
 	get_player(data);
 	return (true);
 }

@@ -73,4 +73,28 @@ typedef struct s_data
 	int			n_line_file;
 }	t_data;
 
+typedef struct s_ray_casting
+{
+	float	fov;
+	float	angle_step;
+	float	ray_angle;
+	float	ray_x;
+	float	ray_y;
+	float	dir_x;
+	float	dir_y;
+	float	delta_dist_x;
+	float	delta_dist_y;
+	int		map_x;
+	int		map_y;
+	float	side_dist_x;
+	float	side_dist_y;
+	int		step_x;
+	int		step_y;
+	int		hit;
+	int		side;
+	float	wall_height;
+	float	tex_x;
+	int		texture_index;
+}	t_ray_casting;
+
 #endif

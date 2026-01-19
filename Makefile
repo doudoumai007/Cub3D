@@ -6,8 +6,11 @@ CFLAGS = -Wall -Wextra -Werror -g -Iinclude -Ilibft
 LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
+MLX_DIR = minilibx-linux
+MLX_LIB = $(MLX_DIR)/libmlx.a
+
 SRC = \
-	src/parsing/main.c \
+	src/main.c \
 	src/parsing/util.c \
 	src/parsing/free.c \
 	src/parsing/init_struct.c \
@@ -22,21 +25,22 @@ SRC = \
 	src/window/window.c \
 	src/window/texture.c \
 	src/window/key.c \
+	src/raycasting/raycasting.c \
+	src/raycasting/util_raycasting.c \
 
 OBJ_DIR = obj
 OBJ = $(SRC:src/%.c=$(OBJ_DIR)/%.o)
 
 all: $(LIBFT) $(NAME)
 
-$(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -lm -o $(NAME)
+$(NAME): $(OBJ) $(LIBFT) $(MLX_LIB)
+	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(MLX_LIB) -lXext -lX11 -lm -o $(NAME)
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
 
 $(OBJ_DIR)/%.o: src/%.c
-	mkdir -p $(OBJ_DIR)/window $(OBJ_DIR)/parsing
-#$(OBJ_DIR)/raycasting 
+	mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
