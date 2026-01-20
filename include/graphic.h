@@ -47,3 +47,10 @@ unsigned int	rgba_to_color(int a, int r, int g, int b);
 void			image_draw_pixel(t_img *img, int x, int y, int color);
 void			adjust_wall_height(t_draw *draw, t_data *data, float *original_height);
 int				get_texture_y(float tex_pos, int texture_height);
+
+//game.c
+int		game_loop(t_data *data);
+void	handle_forward(t_data *data, t_player *player, float move_speed);
+void	handle_backward(t_data *data, t_player *player, float move_speed);
+void	handle_side(t_data *data, t_player *player, float move_speed, int dir);
+void	handle_rotation(t_player *player, float rotation_speed, int dir);
