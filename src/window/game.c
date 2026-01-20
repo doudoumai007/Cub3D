@@ -7,7 +7,7 @@ void	handle_forward(t_data *data, t_player *player, float move_speed)
 
 	new_x = player->current_position->x - move_speed * player->delta_y;
 	new_y = player->current_position->y + move_speed * player->delta_x;
-	if (!check_collision(data, new_x, new_y)) //检查新坐标会不会碰撞墙
+	if (check_collision(data, new_x, new_y)) //检查新坐标会不会碰撞墙
 	{
 		player->current_position->x = new_x;
 		player->current_position->y = new_y;
@@ -21,7 +21,7 @@ void	handle_backward(t_data *data, t_player *player, float move_speed)
 
 	new_x = player->current_position->x + move_speed * player->delta_y;
 	new_y = player->current_position->y - move_speed * player->delta_x;
-	if (!check_collision(data, new_x, new_y))
+	if (check_collision(data, new_x, new_y))
 	{
 		player->current_position->x = new_x;
 		player->current_position->y = new_y;
@@ -35,11 +35,11 @@ void	handle_side(t_data *data, t_player *player, float move_speed, int dir)
 	double	new_x;
 	double	new_y;
 
-	delta_x = -cos((M_PI / 2) - player->rotation) * 5;
+	delta_x = cos((M_PI / 2) - player->rotation) * 5;
 	delta_y = sin((M_PI / 2) - player->rotation) * 5;
 	new_x = player->current_position->x + (dir * delta_y * move_speed);
 	new_y = player->current_position->y + (dir * delta_x * move_speed);
-	if (!check_collision(data, new_x, new_y))
+	if (check_collision(data, new_x, new_y))
 	{
 		player->current_position->x = new_x;
 		player->current_position->y = new_y;
