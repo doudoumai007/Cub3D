@@ -1,4 +1,4 @@
-// #include "cub3D.h"
+#include "cub3D.h"
 
 void	allocate_points(int points[4][2], double x, double y)
 {
