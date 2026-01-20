@@ -25,6 +25,8 @@ SRC = \
 	src/window/window.c \
 	src/window/texture.c \
 	src/window/key.c \
+	src/window/game.c \
+	src/window/collision.c \
 	src/raycasting/raycasting.c \
 	src/raycasting/util_raycasting.c \
 	src/raycasting/draw.c \

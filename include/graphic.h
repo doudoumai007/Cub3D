@@ -1,13 +1,16 @@
-#define WIDTH 1920
-#define HEIGHT 1080
+#ifndef GRAPHIC_H
+# define GRAPHIC_H
 
-#define ESC 65307
-#define KEY_W 119
-#define KEY_S 115
-#define KEY_A 97
-#define KEY_D 100
-#define KEY_LEFT 65361
-#define KEY_RIGHT 65363
+# define WIDTH 1920
+# define HEIGHT 1080
+
+# define ESC 65307
+# define KEY_W 119
+# define KEY_S 115
+# define KEY_A 97
+# define KEY_D 100
+# define KEY_LEFT 65361
+# define KEY_RIGHT 65363
 
 //window.c
 bool	create_window(t_data *data);
@@ -37,7 +40,7 @@ void	calculate_wall_properties(t_ray_casting *rc, t_data *data);
 float	get_texture_index(t_ray_casting *rc);
 
 //draw.c
-void	draw_simpe_wall(t_data *data, int x, float wall_start, float wall_end);
+void	draw_simple_wall(t_data *data, int x, float wall_start, float wall_end);
 void	draw_vertical_line(t_data *data, int x, float wall_height,t_ray_casting *rc);
 void	draw_wall(t_data *data, t_draw *draw, t_texture *texture);
 void	draw_ceiling_floor(t_data *data, int x, float wall_start, float wall_end);
@@ -54,3 +57,9 @@ void	handle_forward(t_data *data, t_player *player, float move_speed);
 void	handle_backward(t_data *data, t_player *player, float move_speed);
 void	handle_side(t_data *data, t_player *player, float move_speed, int dir);
 void	handle_rotation(t_player *player, float rotation_speed, int dir);
+
+
+//collision
+bool	check_collision(t_data *data, double x, double y);
+
+#endif
