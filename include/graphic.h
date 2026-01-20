@@ -61,5 +61,6 @@ void	handle_rotation(t_player *player, float rotation_speed, int dir);
 
 //collision
 bool	check_collision(t_data *data, double x, double y);
+void	allocate_points(int points[4][2], double x, double y);
 
 #endif
