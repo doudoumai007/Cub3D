@@ -37,7 +37,7 @@ bool	create_window(t_data *data)
 	mlx_hook(data->mlx_win, 2, 1L << 0, key_press, data);
 	mlx_hook(data->mlx_win, 3, 1L << 1, key_release, data);
 	mlx_hook(data->mlx_win, 17, 0, close_window, data);
-//	mlx_loop_hook(data->mlx_win, game_loop, data);
+	mlx_loop_hook(data->mlx_win, game_loop, data);
 	mlx_loop(data->mlx);
 	return (true);
 }

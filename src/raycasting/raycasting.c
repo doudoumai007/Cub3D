@@ -13,6 +13,8 @@ void	raycasting(t_data *data)
 	{
 		init_ray_casting(&rc, data, data->img->width - 1 - i);//从左至右
 		perform_dda(&rc, data);
+		calculate_wall_properties(&rc, data);
+		draw_vertical_line(data, i, rc.wall_height, &rc);
 		i--;
 	}
 }
