@@ -33,7 +33,7 @@ float	get_texture_index(t_ray_casting *rc)
 	}
 	if (rc->dir_y > 0)
 		return (TEXTURE_SO);
-	return(TEXTURE_NO)
+	return(TEXTURE_NO);
 }
 
 void	calculate_wall_properties(t_ray_casting *rc, t_data *data)

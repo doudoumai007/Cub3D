@@ -97,4 +97,17 @@ typedef struct s_ray_casting
 	int		texture_index;
 }	t_ray_casting;
 
+typedef struct s_draw
+{
+	int		x;
+	float	wall_height;
+	float	wall_start;
+	float	wall_end;
+	int		texture_index;
+	int		tex_x_int;
+	float	step;
+	float	tex_pos;
+	int		img_height;
+}	t_draw;
+
 #endif

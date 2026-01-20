@@ -18,22 +18,32 @@ bool	load_texture(t_data *data);
 void	texture_loaded(t_data *data, t_texture **t, char *filename);
 
 //key.c
-int	close_window(t_data *data);
-int	key_press(int keycode, t_data *data);
-int	key_release(int keycode, t_data *data);
+int		close_window(t_data *data);
+int		key_press(int keycode, t_data *data);
+int		key_release(int keycode, t_data *data);
 
 //raycasting
 void	raycasting(t_data *data);
+
+//util_raycasting.c
 void	init_step_distance(t_ray_casting *rc);
 void	init_ray_casting(t_ray_casting *rc, t_data *data, int i);
 void	perform_dda(t_ray_casting *rc, t_data *data);
-
-void	render_3d_view(t_data *data);
 
 //wall.c
 float	calculate_wall_dist(t_ray_casting *rc);
 float	normalize_angle_diff(float angle_diff);
 void	calculate_wall_properties(t_ray_casting *rc, t_data *data);
+float	get_texture_index(t_ray_casting *rc);
 
-//draw_screen.c
-void	raycasting(t_data *data);
+//draw.c
+void	draw_simpe_wall(t_data *data, int x, float wall_start, float wall_end);
+void	draw_vertical_line(t_data *data, int x, float wall_height,t_ray_casting *rc);
+void	draw_wall(t_data *data, t_draw *draw, t_texture *texture);
+void	draw_ceiling_floor(t_data *data, int x, float wall_start, float wall_end);
+
+//util_draw.c
+unsigned int	rgba_to_color(int a, int r, int g, int b);
+void			image_draw_pixel(t_img *img, int x, int y, int color);
+void			adjust_wall_height(t_draw *draw, t_data *data, float *original_height);
+int				get_texture_y(float tex_pos, int texture_height);
