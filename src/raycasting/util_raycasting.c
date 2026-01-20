@@ -39,6 +39,7 @@ void	init_ray_casting(t_ray_casting *rc, t_data *data, int i)
 	init_step_distance(rc);
 }
 
+//Digital Differential Analyzer
 void	perform_dda(t_ray_casting *rc, t_data *data)
 {
 	rc->hit = 0;

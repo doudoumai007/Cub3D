@@ -13,7 +13,6 @@ void	draw_simple_wall(t_data *data, int x, float wall_start, float wall_end)
 			image_draw_pixel(data->img, x, y, color);//将颜色写入img
 		y++;
 	}
-
 }
 
 void	draw_ceiling_floor(t_data *data, int x, float wall_start, float wall_end)

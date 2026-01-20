@@ -17,4 +17,5 @@ void	raycasting(t_data *data)
 		draw_vertical_line(data, x, rc.wall_height, &rc);
 		x--;
 	}
+	mlx_put_image_to_window(data->mlx, data->mlx_win, data->img, 0, 0);
 }
