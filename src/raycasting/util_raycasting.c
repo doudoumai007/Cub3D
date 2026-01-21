@@ -30,8 +30,8 @@ void	init_ray_casting(t_ray_casting *rc, t_data *data, int i)
 		+ (i * rc->angle_step);
 	rc->ray_x = data->map->player->current_position->y;
 	rc->ray_y = data->map->player->current_position->x;
-	rc->dir_x = cos(-rc->ray_angle);
-	rc->dir_y = sin(-rc->ray_angle);//y反转，符合向下为正的屏幕坐标系
+	rc->dir_x = cos(rc->ray_angle); // x不反转
+	rc->dir_y = -sin(rc->ray_angle);//y反转，符合向下为正的屏幕坐标系
 	rc->delta_dist_x = fabs(1.0f / rc->dir_x);
 	rc->delta_dist_y = fabs(1.0f / rc->dir_y);
 	rc->map_x = (int)rc->ray_x;
