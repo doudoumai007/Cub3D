@@ -27,7 +27,6 @@ void	draw_player(t_data *data, int x, int y, int modifier)
 	double	precise_x;
 	double	precise_y;
 
-	printf("PLAYER CALLED\n");
 	player_size = modifier / 4;
 	precise_x = (x + (data->map->player->current_position->y - \
 		(int)data->map->player->current_position->y)) * modifier;
