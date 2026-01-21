@@ -1,4 +1,5 @@
 NAME = cub3D
+NAME_BONUS = cub3D_bonus
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g -Iinclude -Ilibft
@@ -33,13 +34,46 @@ SRC = \
 	src/raycasting/util_draw.c \
 	src/raycasting/wall.c \
 
+SRC_BONUS = \
+	src/main.c \
+	src/parsing/util.c \
+	src/parsing/free.c \
+	src/parsing/init_struct.c \
+	src/parsing/parsing.c \
+	src/parsing/texture.c \
+	src/parsing/line.c \
+	src/parsing/valid.c \
+	src/parsing/player.c \
+	src/parsing/parse_map.c \
+	src/parsing/check_texture.c \
+	src/parsing/debug.c \
+	src/window/texture.c \
+	src/window/key.c \
+	src/window/game.c \
+	src/window/collision.c \
+	src/raycasting/raycasting.c \
+	src/raycasting/util_raycasting.c \
+	src/raycasting/draw.c \
+	src/raycasting/util_draw.c \
+	src/raycasting/wall.c \
+	src/window/bonus/bonus_window.c \
+	src/window/bonus/bonus_border.c \
+	src/window/bonus/bonus_minimap.c \
+	src/window/bonus/bonus_player.c \
+
 OBJ_DIR = obj
 OBJ = $(SRC:src/%.c=$(OBJ_DIR)/%.o)
+OBJ_BONUS = $(SRC_BONUS:src/%.c=$(OBJ_DIR)/%.o)
 
 all: $(LIBFT) $(NAME)
 
+bonus: $(LIBFT) $(NAME_BONUS)
+
 $(NAME): $(OBJ) $(LIBFT) $(MLX_LIB)
 	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(MLX_LIB) -lXext -lX11 -lm -o $(NAME)
+
+$(NAME_BONUS): $(OBJ_BONUS) $(LIBFT) $(MLX_LIB)
+	$(CC) $(CFLAGS) $(OBJ_BONUS) $(LIBFT) $(MLX_LIB) -lXext -lX11 -lm -o $(NAME_BONUS)
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)

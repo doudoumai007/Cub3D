@@ -1,45 +1,28 @@
 #include "cub3D.h"
 
-void	draw_border(t_data *data, int x, int y, int modifier)
+void	draw_minimap(t_data *data, int x, int y, int modifier)
 {
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < modifier  )
-	{
-		j = 0;
-		while (j < modifier)
-		{
-			if (i < 1 || i >= modifier - 1 || j < 1 || j >= modifier - 1)
-				image_draw_pixel(data->img, x * modifier + i, y * modifier + j\
-				, rgba_to_color(0, 135, 206, 235));
-			j++;
-		}
-		i++;
-	}
+	draw_border(data, x, y, modifier);
+	draw_content(data, x, y, modifier);
+	if (x == (int)data->map->player->current_position->y && \
+		y == (int)data->map->player->current_position->x)
+		draw_player(data, x, y, modifier);
 }
 
-void	draw_content(t_data *data, int x, int y, int modifier)
+void	minimap(t_data *data, int modifier)
 {
-	int	color;
-	int	i;
-	int	j;
+	int	x;
+	int	y;
 
-	i = 0;
-	while (i < modifier - 1)
+	y = 0;
+	while (y < data->map->map_height)
 	{
-		j = 1;
-		while (j < modifier - 1)
+		x = 0;
+		while (x < data->map->map_width)
 		{
-			if (data->map->map_2d[y][x] == '1')
-				color = rgba_to_color(219, 112, 147, 150);
-			else
-				color = rgba_to_color(255, 182, 193, 150);
-			image_draw_pixel(data->img, x * modifier + i, y * modifier + j\
-			, color);
-			j++;
+			draw_minimap(data, x, y, modifier);
+			x++;
 		}
-		i++;
+		y++;
 	}
 }

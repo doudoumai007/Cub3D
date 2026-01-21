@@ -31,6 +31,7 @@ bool	init_mlx_window(t_data *data)
 void	update_image(t_data *data)
 {
 	raycasting(data);
+	minimap(data, HEIGHT / 80);
 	mlx_put_image_to_window(data->mlx, data->mlx_win, data->img, 0, 0);
 }
 

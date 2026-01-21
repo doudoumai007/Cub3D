@@ -6,7 +6,7 @@ void	draw_player_pixel(t_data *data, double x, double y, int size)
 	int	j;
 	int	glow_color;
 
-	glow_color = rgba_to_color(0, 255 - (size * 30), 215 - (size * 30), 0);
+	glow_color = rgba_to_color(0, 255 - (size * 30), 215 - (size * 25), 0);
 	i = - size;
 	while (i <= size)
 	{
@@ -14,7 +14,7 @@ void	draw_player_pixel(t_data *data, double x, double y, int size)
 		while (j <= size)
 		{
 			if (i * i + j * j <= size * size)
-				image_draw_pixel(data->img, x + 1, y + 1, glow_color);
+				image_draw_pixel(data->img, x + i, y + j, glow_color);
 			j++;
 		}
 		i++;
@@ -27,6 +27,7 @@ void	draw_player(t_data *data, int x, int y, int modifier)
 	double	precise_x;
 	double	precise_y;
 
+	printf("PLAYER CALLED\n");
 	player_size = modifier / 4;
 	precise_x = (x + (data->map->player->current_position->y - \
 		(int)data->map->player->current_position->y)) * modifier;

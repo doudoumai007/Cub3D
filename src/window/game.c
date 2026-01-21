@@ -80,6 +80,6 @@ int	game_loop(t_data *data)
 		handle_rotation(player, rotation_speed, -1); //与原code调转
 	if (player->move_forward || player->move_backward || player->move_left || \
 		 player->move_right || player->rotate_left || player->rotate_right)
-		raycasting(data);
+		update_image(data);
 	return (0);
 }

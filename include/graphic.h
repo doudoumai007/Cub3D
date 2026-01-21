@@ -64,6 +64,12 @@ bool	check_collision(t_data *data, double x, double y);
 void	allocate_points(int points[4][2], double x, double y);
 
 //bonus
+void	update_image(t_data *data);
+void	minimap(t_data *data, int modifier);
+void	draw_minimap(t_data *data, int x, int y, int modifier);
+void	draw_border(t_data *data, int x, int y, int modifier);
+void	draw_content(t_data *data, int x, int y, int modifier);
 void	draw_player(t_data *data, int x, int y, int modifier);
 void	draw_player_pixel(t_data *data, double x, double y, int size);
+
 #endif
