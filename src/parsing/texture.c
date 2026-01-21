@@ -62,7 +62,7 @@ bool	fill_color(char *str, char c, t_textures *textures)
 		textures->c_g = ft_atoi(color_tab[1]);
 		textures->c_b = ft_atoi(color_tab[2]);
 		textures->c_ok = 1;
-		return (free(color_tab), true);
+		return (free_tab(color_tab), true);
 	}
 	return (false);
 }
