@@ -63,8 +63,8 @@ int	game_loop(t_data *data)
 	float		rotation_speed;
 	t_player	*player;
 
-	move_speed = 0.1f;
-	rotation_speed = 0.1f;
+	move_speed = 0.01f;
+	rotation_speed = 0.03f;
 	player = data->map->player;
 	if (player->move_forward)
 		handle_forward(data, player, move_speed);

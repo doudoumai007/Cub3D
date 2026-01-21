@@ -43,7 +43,7 @@ void	init_ray_casting(t_ray_casting *rc, t_data *data, int i)
 void	perform_dda(t_ray_casting *rc, t_data *data)
 {
 	rc->hit = 0;
-	while (!rc->hit && rc->map_x >=0 && rc->map_x < data->map->map_width
+	while (!rc->hit && rc->map_x >= 0 && rc->map_x < data->map->map_width
 		&& rc->map_y >= 0 && rc->map_y < data->map->map_height)
 	{
 		if (rc->side_dist_x < rc->side_dist_y)//x更短，先碰墙

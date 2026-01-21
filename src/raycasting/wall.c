@@ -3,6 +3,7 @@
 float	calculate_wall_dist(t_ray_casting *rc)
 {
 	float	ray_wall_dist;
+
 	if (rc->side == 0) //碰到x墙（x值不变），也就是竖墙
 		ray_wall_dist = (rc->map_x - rc->ray_x + (1 - rc->step_x) / 2) \
 			/ rc->dir_x;
@@ -18,7 +19,7 @@ float	normalize_angle_diff(float angle_diff)
 {
 	while (angle_diff > M_PI)
 		angle_diff -= 2 * M_PI;
-	while (angle_diff < - M_PI)
+	while (angle_diff < -M_PI)
 		angle_diff +=  2 * M_PI;
 	return (angle_diff);
 }

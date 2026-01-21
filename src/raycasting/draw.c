@@ -23,7 +23,7 @@ void	draw_ceiling_floor(t_data *data, int x, float wall_start, float wall_end)
 	while (y < wall_start && y < data->img->height)
 	{
 		if (y >= 0)
-			image_draw_pixel(data->img, x, y, rgba_to_color(255, \
+			image_draw_pixel(data->img, x, y, rgba_to_color(0, \
 			data->textures->c_r, data->textures->c_g, data->textures->c_b));
 		y++;
 	}
@@ -31,7 +31,7 @@ void	draw_ceiling_floor(t_data *data, int x, float wall_start, float wall_end)
 	while (y < data->img->height)
 	{
 		if (y >= 0)
-			image_draw_pixel(data->img, x, y, rgba_to_color(255, \
+			image_draw_pixel(data->img, x, y, rgba_to_color(0, \
 			data->textures->f_r, data->textures->f_g, data->textures->f_b));
 		y++;
 	}
@@ -47,12 +47,12 @@ void	draw_wall(t_data *data, t_draw *draw, t_texture *texture)
 
 	adjust_wall_height(draw, data, &original_height);
 	step = (float)texture->height / original_height;//>1贴图被压缩，<1贴图被拉长
-	tex_pos = (draw->wall_start - (data->img->height - original_height) / 2.0f)
-		* step;//保证墙被截断时纹理不错位
+	tex_pos = (draw->wall_start - (data->img->height - original_height) \
+				/ 2.0f) * step;//保证墙被截断时纹理不错位
 	y = (int)draw->wall_start;
 	while (y < draw->wall_end && y < data->img->height)
 	{
-		if (y > 0 && draw->tex_x_int >= 0 && draw->tex_x_int < texture->width)
+		if (y >= 0 && draw->tex_x_int >= 0 && draw->tex_x_int < texture->width)
 		{
 			pixel = (unsigned char *)texture->addr + \
 					(get_texture_y(tex_pos, texture->height) * texture->line_length + \
