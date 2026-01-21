@@ -6,7 +6,7 @@ void	draw_minimap(t_data *data, int x, int y, int modifier)
 	draw_content(data, x, y, modifier);
 	if (x == (int)data->map->player->current_position->y && \
 		y == (int)data->map->player->current_position->x)
-		draw_player(data,x, y, modifier);
+		draw_player(data, x, y, modifier);
 }
 
 void	minimap(t_data *data, int modifier)

@@ -63,4 +63,7 @@ void	handle_rotation(t_player *player, float rotation_speed, int dir);
 bool	check_collision(t_data *data, double x, double y);
 void	allocate_points(int points[4][2], double x, double y);
 
+//bonus
+void	draw_player(t_data *data, int x, int y, int modifier);
+void	draw_player_pixel(t_data *data, double x, double y, int size);
 #endif
