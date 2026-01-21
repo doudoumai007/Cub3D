@@ -36,7 +36,7 @@ int	get_texture_y(float tex_pos, int texture_height)
 	tex_y = (int)tex_pos;
 	if (tex_y >= texture_height)
 		tex_y = texture_height -1;
-	else if (tex_y < 0)
+	if (tex_y < 0)
 		tex_y = 0;
 	return (tex_y);
 }
