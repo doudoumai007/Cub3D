@@ -43,7 +43,6 @@ void		free_texture_tab(t_data *data);
 void		free_player(t_player *player);
 void		free_data(t_data *data);
 
-
 //valid
 bool		is_valid_color(char **color_tab);
 bool		is_valid_filename(char *filename, char *ext);
@@ -66,9 +65,8 @@ bool		check_map_character(char **map_2d);
 bool		flood_fill(t_map *map, char **map_2d, int x, int y);
 
 //debug
-void	print_map(t_map *map);
-void	print_file(int fd);
-void	debug_map(char **map);
-
+void		print_map(t_map *map);
+void		print_file(int fd);
+void		debug_map(char **map);
 
 #endif
