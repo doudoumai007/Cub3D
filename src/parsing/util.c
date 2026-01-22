@@ -53,7 +53,7 @@ int	get_max_len(char **map_2d)
 	while (map_2d[i])
 	{
 		if ((int)ft_strlen(map_2d[i]) > max)
-			max = ft_strlen(map_2d[i]) + 1;
+			max = ft_strlen(map_2d[i]);
 		i++;
 	}
 	return (max);

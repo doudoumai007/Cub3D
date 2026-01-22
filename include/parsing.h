@@ -65,4 +65,10 @@ bool		check_map(t_data *data);
 bool		check_map_character(char **map_2d);
 bool		flood_fill(t_map *map, char **map_2d, int x, int y);
 
+//debug
+void	print_map(t_map *map);
+void	print_file(int fd);
+void	debug_map(char **map);
+
+
 #endif
