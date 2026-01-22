@@ -32,7 +32,6 @@ typedef	struct s_player
 	double		delta_x;
 	double		delta_y;
 	double		rotation;
-//	int			player_count;
 	int			move_forward;
 	int			move_backward;
 	int			move_left;
@@ -60,7 +59,6 @@ typedef struct s_map
 	int			player_y;
 	t_player	*player;
 	t_texture	*textures[4];
-	bool		minimap_display;
 }	t_map;
 
 typedef struct s_data
