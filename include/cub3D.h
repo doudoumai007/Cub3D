@@ -1,5 +1,5 @@
-#ifndef	CUB3D_H
-# define	CUB3D_H
+#ifndef CUB3D_H
+# define CUB3D_H
 
 # include <math.h>
 # include <stdbool.h>
@@ -18,8 +18,8 @@
 # define M_PI 3.14159265358979323846
 
 # define TEXTURE_NO	0
-# define TEXTURE_SO 1
-# define TEXTURE_WE 2
-# define TEXTURE_EA 3
+# define TEXTURE_SO	1
+# define TEXTURE_WE	2
+# define TEXTURE_EA	3
 
 #endif

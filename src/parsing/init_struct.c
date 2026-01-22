@@ -32,7 +32,7 @@ bool	init_player(t_data *data)
 {
 	data->map->player = ft_calloc(1, sizeof(t_player));
 	if (!data->map->player)
-		return(false);
+		return (false);
 	data->map->player->current_position = NULL;
 	data->map->player->start_position = NULL;
 	data->map->player->delta_x = 0.0;

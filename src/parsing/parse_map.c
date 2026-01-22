@@ -56,7 +56,7 @@ bool	padding_map(t_map *map)
 	{
 		tmp = ft_calloc(max_len + 1, sizeof(char));
 		if (!tmp)
-			return(false);
+			return (false);
 		ft_memset(tmp, ' ', max_len);
 		ft_copy(tmp, new_2d[i]);
 		free(new_2d[i]);

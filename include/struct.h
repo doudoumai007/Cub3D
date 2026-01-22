@@ -25,7 +25,7 @@ typedef struct s_vector
 	double	y;
 }	t_vector;
 
-typedef	struct s_player
+typedef struct s_player
 {
 	t_vector	*start_position;
 	t_vector	*current_position;

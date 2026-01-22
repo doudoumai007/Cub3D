@@ -37,10 +37,10 @@ int	ft_isnumeric(char *str)
 	while (str[i])
 	{
 		if (!ft_isdigit(str[i]))
-			return(0);
+			return (0);
 		i++;
 	}
-	return(1);
+	return (1);
 }
 
 int	get_max_len(char **map_2d)
@@ -56,7 +56,6 @@ int	get_max_len(char **map_2d)
 			max = ft_strlen(map_2d[i]) + 1;
 		i++;
 	}
-	// printf("[DEBUG]: maxlen = %d\n", max);
 	return (max);
 }
 

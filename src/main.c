@@ -11,12 +11,12 @@ int	main(int ac, char **av)
 	if (!parsing(av[1], ac, data))
 	{
 		free_data(data);
-		return(1);
+		return (1);
 	}
 	if (!create_window(data))
 	{
-	 	free_data(data);
-	 	return(1);
+		free_data(data);
+		return (1);
 	}
 	free_data(data);
 	return (0);

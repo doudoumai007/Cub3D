@@ -9,7 +9,7 @@ char	**split_line(char *line)
 		return (NULL);
 	if (!split[0] || !split[1] || ft_strlen(split[0]) > 2)
 		return (free_tab(split), NULL);
-	return(split);
+	return (split);
 }
 
 bool	fill_texture_data(char *line, t_textures *textures)
@@ -22,7 +22,7 @@ bool	fill_texture_data(char *line, t_textures *textures)
 		return (false);
 	if (textures->no_file && textures->so_file \
 		&& textures->we_file && textures->ea_file)
-		return(free_tab(line_tab), false);
+		return (free_tab(line_tab), false);
 	element = line_tab[0];
 	if (!textures->no_file && (!ft_strcmp(element, "NO") \
 		|| (element[0] == 'N' && ft_strlen(element) == 1)))
@@ -36,7 +36,7 @@ bool	fill_texture_data(char *line, t_textures *textures)
 	if (!textures->ea_file && (!ft_strcmp(element, "EA") \
 		|| (element[0] == 'E' && ft_strlen(element) == 1)))
 		textures->ea_file = ft_strdup(line_tab[1]);
-	return(free_tab(line_tab), true);
+	return (free_tab(line_tab), true);
 }
 
 bool	fill_color(char *str, char c, t_textures *textures)
@@ -56,7 +56,7 @@ bool	fill_color(char *str, char c, t_textures *textures)
 		textures->f_ok = 1;
 		return (free_tab(color_tab), true);
 	}
-	else if(c == 'C')
+	else if (c == 'C')
 	{
 		textures->c_r = ft_atoi(color_tab[0]);
 		textures->c_g = ft_atoi(color_tab[1]);
@@ -92,20 +92,20 @@ bool	parse_texture(int fd, t_data *data, int	*n_line)
 
 	line = get_next_line_trim(fd);
 	if (!line)
-		return(false);
+		return (false);
 	while (line)
 	{
 		(*n_line)++;
 		if (ft_strlen(line) && ft_strchr("NSWE", line[0]) && \
 			!fill_texture_data(line, data->textures))
-			return(free(line), false);
+			return (free(line), false);
 		else if (ft_strlen(line) && ft_strchr("FC", line[0]) && \
 			!fill_color_data(line, data->textures))
-			return(free(line), false);
+			return (free(line), false);
 		free(line);
 		if (is_valid_texture(data->textures))
-			break;
+			break ;
 		line = get_next_line_trim(fd);
 	}
-	return(is_valid_texture(data->textures));
+	return (is_valid_texture(data->textures));
 }

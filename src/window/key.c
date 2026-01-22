@@ -14,13 +14,13 @@ int	key_press(int keycode, t_data *data)
 		free_data(data);
 		exit(0);
 	}
-	if (keycode == KEY_LEFT) //参考code的方向调转了
+	if (keycode == KEY_LEFT)
 		data->map->player->rotate_left = 1;
-	if (keycode == KEY_RIGHT)//参考code的方向调转了
+	if (keycode == KEY_RIGHT)
 		data->map->player->rotate_right = 1;
-	if (keycode == KEY_A)//参考code的方向调转了
+	if (keycode == KEY_A)
 		data->map->player->move_left = 1;
-	if (keycode == KEY_D)//参考code的方向调转了
+	if (keycode == KEY_D)
 		data->map->player->move_right = 1;
 	if (keycode == KEY_W)
 		data->map->player->move_forward = 1;
@@ -31,13 +31,13 @@ int	key_press(int keycode, t_data *data)
 
 int	key_release(int keycode, t_data *data)
 {
-	if (keycode == KEY_LEFT) //参考code的方向调转了
+	if (keycode == KEY_LEFT)
 		data->map->player->rotate_left = 0;
-	if (keycode == KEY_RIGHT)//参考code的方向调转了
+	if (keycode == KEY_RIGHT)
 		data->map->player->rotate_right = 0;
-	if (keycode == KEY_A)//参考code的方向调转了
+	if (keycode == KEY_A)
 		data->map->player->move_left = 0;
-	if (keycode == KEY_D)//参考code的方向调转了
+	if (keycode == KEY_D)
 		data->map->player->move_right = 0;
 	if (keycode == KEY_W)
 		data->map->player->move_forward = 0;

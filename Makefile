@@ -22,9 +22,10 @@ SRC = \
 	src/parsing/player.c \
 	src/parsing/parse_map.c \
 	src/parsing/check_texture.c \
+	src/parsing/check_map.c \
 	src/parsing/debug.c \
 	src/window/window.c \
-	src/window/texture.c \
+	src/window/load_texture.c \
 	src/window/key.c \
 	src/window/game.c \
 	src/window/collision.c \
@@ -46,8 +47,9 @@ SRC_BONUS = \
 	src/parsing/player.c \
 	src/parsing/parse_map.c \
 	src/parsing/check_texture.c \
+	src/parsing/check_map.c \
 	src/parsing/debug.c \
-	src/window/texture.c \
+	src/window/load_texture.c \
 	src/window/key.c \
 	src/window/game.c \
 	src/window/collision.c \

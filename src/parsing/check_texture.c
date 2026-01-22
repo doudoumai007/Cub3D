@@ -15,7 +15,7 @@ bool	texture_ok(t_textures *textures)
 	tmp_fd[3] = open(textures->ea_file, O_RDONLY);
 	i = 0;
 	count = 0;
-	while(i < 4)
+	while (i < 4)
 	{
 		if (tmp_fd[i] != -1)
 		{
@@ -25,19 +25,19 @@ bool	texture_ok(t_textures *textures)
 		i++;
 	}
 	free(tmp_fd);
-	return(count == 4);
+	return (count == 4);
 }
 
 bool	color_not_ok(t_textures *textures)
 {
 	int	color;
 
-	color = textures->f_ok == 0 || textures->c_ok == 0 ||\
-			textures->f_r < 0 || textures->f_r > 255 ||\
-			textures->f_g < 0 || textures->f_g > 255 ||\
-			textures->f_b < 0 || textures->f_b > 255 ||\
-			textures->c_r < 0 || textures->c_r > 255 ||\
-			textures->c_g < 0 || textures->c_g > 255 ||\
+	color = textures->f_ok == 0 || textures->c_ok == 0 || \
+			textures->f_r < 0 || textures->f_r > 255 || \
+			textures->f_g < 0 || textures->f_g > 255 || \
+			textures->f_b < 0 || textures->f_b > 255 || \
+			textures->c_r < 0 || textures->c_r > 255 || \
+			textures->c_g < 0 || textures->c_g > 255 || \
 			textures->c_b < 0 || textures->c_b > 255;
 	return (color);
 }
@@ -54,6 +54,5 @@ bool	check_texture(t_data *data)
 		write(2, "Error\nProblem with color\n", 25);
 		return (false);
 	}
-//	printf("[DEBUG]:check_texture ok\n");
 	return (true);
 }

@@ -23,12 +23,11 @@ t_vector	*set_player_pos(int i, int j, char c, t_player *player)
 	if (c == 'N')
 		player->rotation = M_PI / 2;
 	else if (c == 'S')
-		player->rotation = 3 * M_PI /2;
+		player->rotation = 3 * M_PI / 2;
 	else if (c == 'W')
 		player->rotation = M_PI;
 	else if (c == 'E')
 		player->rotation = 0;
-	//x轴y轴向量，每一步走5个世界单位(游戏手感参数)
 	player->delta_x = cos(player->rotation) * 5;
 	player->delta_y = sin(player->rotation) * 5;
 	return (player->current_position);
@@ -47,7 +46,7 @@ void	get_player(t_data *data)
 		{
 			if (is_player_char(data->map->map_2d[i][j]))
 			{
-				set_player_pos(i , j, data->map->map_2d[i][j], \
+				set_player_pos(i, j, data->map->map_2d[i][j], \
 					data->map->player);
 					data->map->n_player++;
 					data->map->player_x = i;
@@ -58,5 +57,4 @@ void	get_player(t_data *data)
 		}
 		i++;
 	}
-//	printf("[DEBUG]:player number: %d\n", data->map->n_player);
 }

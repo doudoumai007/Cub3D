@@ -16,7 +16,7 @@ bool	is_valid_color(char **color_tab)
 
 bool	is_valid_filename(char *filename, char *ext)
 {
-	if ((!filename || ft_strlen(filename) < 4 ) || \
+	if((!filename || ft_strlen(filename) < 4 ) || \
 		(ft_strcmp(filename + ft_strlen(filename) - 4, ext)))
 		return (false);
 	return (true);
