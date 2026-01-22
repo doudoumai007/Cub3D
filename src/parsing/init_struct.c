@@ -23,7 +23,7 @@ bool	init_texture(t_data *data)
 void	init_data(t_data *data)
 {
 	data->mlx = NULL;
-	data->mlx_win =	NULL;
+	data->mlx_win = NULL;
 	data->map = NULL;
 	data->textures = NULL;
 }
