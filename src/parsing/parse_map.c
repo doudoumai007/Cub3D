@@ -64,7 +64,7 @@ bool	padding_map(t_map *map)
 		free(tmp);
 		i++;
 	}
-	map->map_width = max_len - 1;
+	map->map_width = max_len;
 	return (true);
 }
 

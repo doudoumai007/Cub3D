@@ -51,4 +51,10 @@ bool	check_texture(t_data *data);
 bool	parsing(char *filename, int ac, t_data *data);
 bool	parse_map(int fd, t_data *data, int *n_line);
 
+//debug
+void	print_map(t_map *map);
+void	print_file(int fd);
+void	debug_map(char **map);
+
+
 #endif

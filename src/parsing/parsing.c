@@ -37,7 +37,7 @@ bool	flood_fill(t_map *map, char **map_2d, int x, int y)
 	if (x < 0 || y < 0|| x >= map->map_height || y >= map->map_width \
 		|| map_2d[x][y] == ' ')
 	{
-//		printf("[DEBUG] x:%d y:%d c:%c\n", x, y, map_2d[x][y]);
+		// printf("[DEBUG] x:%d y:%d c:%c\n", x, y, map_2d[x][y]);
 		return (false);
 	}
 	if (map_2d[x][y] == '1' || map_2d[x][y] == 'V')
@@ -93,9 +93,9 @@ bool	check_map(t_data *data)
 {
 	char	**copy;
 
-	// debug_map(data->map->map_2d);
-	// printf("[DEBUG]: height %d\n", data->map->map_height);
-	// printf("[DEBUG]: width %d\n", data->map->map_width);
+	debug_map(data->map->map_2d);
+	printf("[DEBUG]: height %d\n", data->map->map_height);
+	printf("[DEBUG]: width %d\n", data->map->map_width);
 	copy = dup_map(data->map);
 	if (!copy)
 		return (false);
@@ -110,7 +110,7 @@ bool	check_map(t_data *data)
 		free_map(copy);
 		return (write(2, "Error\nMap unclosed\n", 20), false);
 	}
-	// debug_map(copy);
+	debug_map(copy);
 	free_map(copy);
 	return (true);
 }
