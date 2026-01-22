@@ -3,7 +3,7 @@
 void	raycasting(t_data *data)
 {
 	t_ray_casting	rc;
-	int				x;//代表第x列
+	int				x;
 
 	rc.fov = M_PI / 3;
 	rc.angle_step = rc.fov / data->img->width;
@@ -11,7 +11,7 @@ void	raycasting(t_data *data)
 	x = data->img->width - 1;
 	while (x >= 0)
 	{
-		init_ray_casting(&rc, data, data->img->width - 1 - x);//从0至x
+		init_ray_casting(&rc, data, data->img->width - 1 - x);
 		perform_dda(&rc, data);
 		calculate_wall_properties(&rc, data);
 		draw_vertical_line(data, x, rc.wall_height, &rc);

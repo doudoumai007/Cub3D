@@ -10,7 +10,6 @@ void	allocate_points(int points[4][2], double x, double y)
 	points[2][1] = (int)(y + 0.1);
 	points[3][0] = (int)(x + 0.1);
 	points[3][1] = (int)(y + 0.1);
-
 }
 
 bool	check_collision(t_data *data, double x, double y)

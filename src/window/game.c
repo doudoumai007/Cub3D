@@ -75,11 +75,11 @@ int	game_loop(t_data *data)
 	if (player->move_right)
 		handle_side(data, player, move_speed, 1);
 	if (player->rotate_left)
-		handle_rotation(player, rotation_speed, 1);//与原code调转
+		handle_rotation(player, rotation_speed, 1);
 	if (player->rotate_right)
-		handle_rotation(player, rotation_speed, -1); //与原code调转
+		handle_rotation(player, rotation_speed, -1);
 	if (player->move_forward || player->move_backward || player->move_left || \
-		 player->move_right || player->rotate_left || player->rotate_right)
+		player->move_right || player->rotate_left || player->rotate_right)
 		update_image(data);
 	return (0);
 }

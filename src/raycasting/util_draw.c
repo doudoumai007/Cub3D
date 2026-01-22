@@ -1,9 +1,6 @@
 #include "cub3D.h"
 
-//32位，每个颜色占8位；<<左移
-//11111111 10000000 01000000 00100000
-//   a         r         g         b
-unsigned int	rgba_to_color(int a, int r, int g, int b)//alpha透明度
+unsigned int	rgba_to_color(int a, int r, int g, int b)
 {
 	return (a << 24 | r << 16 | g << 8 | b);
 }
@@ -21,7 +18,7 @@ void	adjust_wall_height(t_draw *draw, t_data *data, float *original_height)
 	const int	max_height = data->img->height * 4;
 
 	*original_height = draw->wall_height;
-	if (draw->wall_height > max_height)//距离墙太近，墙会特别高，要截断
+	if (draw->wall_height > max_height)
 	{
 		draw->wall_start = (data->img->height - max_height) / 2.0f;
 		draw->wall_end = draw->wall_start + max_height;

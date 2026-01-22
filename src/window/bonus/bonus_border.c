@@ -6,13 +6,13 @@ void	draw_border(t_data *data, int x, int y, int modifier)
 	int	j;
 
 	i = 0;
-	while (i < modifier  )
+	while (i < modifier)
 	{
 		j = 0;
 		while (j < modifier)
 		{
 			if (i < 1 || i >= modifier - 1 || j < 1 || j >= modifier - 1)
-				image_draw_pixel(data->img, x * modifier + i, y * modifier + j\
+				image_draw_pixel(data->img, x * modifier + i, y * modifier + j \
 				, rgba_to_color(0, 135, 206, 235));
 			j++;
 		}
@@ -36,7 +36,7 @@ void	draw_content(t_data *data, int x, int y, int modifier)
 				color = rgba_to_color(255, 105, 180, 255);
 			else
 				color = rgba_to_color(255, 182, 193, 200);
-			image_draw_pixel(data->img, x * modifier + i, y * modifier + j\
+			image_draw_pixel(data->img, x * modifier + i, y * modifier + j \
 			, color);
 			j++;
 		}

@@ -32,13 +32,13 @@ bool	color_not_ok(t_textures *textures)
 {
 	int	color;
 
-	color = textures->f_ok == 0 || textures->c_ok == 0 || \
-			textures->f_r < 0 || textures->f_r > 255 || \
-			textures->f_g < 0 || textures->f_g > 255 || \
-			textures->f_b < 0 || textures->f_b > 255 || \
-			textures->c_r < 0 || textures->c_r > 255 || \
-			textures->c_g < 0 || textures->c_g > 255 || \
-			textures->c_b < 0 || textures->c_b > 255;
+	color = (textures->f_ok == 0 || textures->c_ok == 0
+			|| textures->f_r < 0 || textures->f_r > 255
+			|| textures->f_g < 0 || textures->f_g > 255
+			|| textures->f_b < 0 || textures->f_b > 255
+			|| textures->c_r < 0 || textures->c_r > 255
+			|| textures->c_g < 0 || textures->c_g > 255
+			|| textures->c_b < 0 || textures->c_b > 255);
 	return (color);
 }
 

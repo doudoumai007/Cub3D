@@ -4,13 +4,13 @@ float	calculate_wall_dist(t_ray_casting *rc)
 {
 	float	ray_wall_dist;
 
-	if (rc->side == 0) //碰到x墙（x值不变），也就是竖墙
+	if (rc->side == 0)
 		ray_wall_dist = (rc->map_x - rc->ray_x + (1 - rc->step_x) / 2) \
 			/ rc->dir_x;
 	else
 		ray_wall_dist = (rc->map_y - rc->ray_y + (1 - rc->step_y) / 2) \
 			/ rc->dir_y;
-	if (ray_wall_dist < 0.1f) //设置最小安全值，保护如果值太小或者等于0
+	if (ray_wall_dist < 0.1f)
 		ray_wall_dist = 0.1f;
 	return (ray_wall_dist);
 }
@@ -20,7 +20,7 @@ float	normalize_angle_diff(float angle_diff)
 	while (angle_diff > M_PI)
 		angle_diff -= 2 * M_PI;
 	while (angle_diff < -M_PI)
-		angle_diff +=  2 * M_PI;
+		angle_diff += 2 * M_PI;
 	return (angle_diff);
 }
 
@@ -34,13 +34,13 @@ float	get_texture_index(t_ray_casting *rc)
 	}
 	if (rc->dir_y > 0)
 		return (TEXTURE_SO);
-	return(TEXTURE_NO);
+	return (TEXTURE_NO);
 }
 
 void	calculate_wall_properties(t_ray_casting *rc, t_data *data)
 {
 	float	ray_wall_dist;
-	float	wall_hit_fraction; //射线撞击墙的纹理的x坐标的小数
+	float	wall_hit_fraction;
 	float	angle_diff;
 
 	ray_wall_dist = calculate_wall_dist(rc);
