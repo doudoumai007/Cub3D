@@ -6,7 +6,7 @@
 /*   By: yopeng <yopeng@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 15:29:33 by yopeng            #+#    #+#             */
-/*   Updated: 2026/01/22 15:29:34 by yopeng           ###   ########.fr       */
+/*   Updated: 2026/01/22 17:13:07 by yopeng           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,16 @@ bool	check_file(int fd, char *filename, t_data *data)
 	if (!init_texture(data))
 		return (false);
 	if (!parse_texture(fd, data, &n_line))
-		return (write(2, "Error\nInvalid texture\n", 22), false);
-	if (!check_texture(data))
+	{
+		get_next_line_trim(-1);
+		write(2, "Error\nInvalid texture\n", 22);
 		return (false);
+	}
+	if (!check_texture(data))
+	{
+		get_next_line_trim(-1);
+		return (false);
+	}
 	if (!parse_map(fd, data, &n_line))
 		return (false);
 	if (!check_map(data))

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yopeng <yopeng@student.42.fr>              +#+  +:+       +#+        */
+/*   By: peiyli <peiyli@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 15:28:59 by yopeng            #+#    #+#             */
-/*   Updated: 2026/01/22 15:29:00 by yopeng           ###   ########.fr       */
+/*   Updated: 2026/01/22 16:32:32 by peiyli           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,15 +67,15 @@ bool	check_map(t_data *data)
 {
 	char	**copy;
 
-	copy = dup_map(data->map);
-	if (!copy)
-		return (false);
 	if (!data->map->n_player)
 		return (write(2, "Error\nNo player in the map\n", 28), false);
 	if (data->map->n_player > 1)
 		return (write(2, "Error\nMore than 1 player in the map\n", 37), false);
 	if (!check_map_character(data->map->map_2d))
 		return (write(2, "Error\nInvalid character in the map\n", 36), false);
+	copy = dup_map(data->map);
+	if (!copy)
+		return (false);
 	if (!flood_fill(data->map, copy, data->map->player_x, data->map->player_y))
 	{
 		free_map(copy);

@@ -6,7 +6,7 @@
 /*   By: yopeng <yopeng@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 15:29:50 by yopeng            #+#    #+#             */
-/*   Updated: 2026/01/22 15:29:51 by yopeng           ###   ########.fr       */
+/*   Updated: 2026/01/22 17:33:59 by yopeng           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	*ft_strdup_trim(char *line)
 
 	if (!line)
 		return (NULL);
-	new = ft_calloc(ft_strlen(line), sizeof(char));
+	new = ft_calloc(ft_strlen(line) + 1, sizeof(char));
 	if (!new)
 		return (NULL);
 	i = 0;
@@ -38,6 +38,7 @@ char	*ft_strdup_trim(char *line)
 		new[i] = line[i];
 		i++;
 	}
+	new[i] = '\0';
 	return (new);
 }
 

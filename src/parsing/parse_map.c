@@ -6,7 +6,7 @@
 /*   By: yopeng <yopeng@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 15:29:29 by yopeng            #+#    #+#             */
-/*   Updated: 2026/01/22 15:29:30 by yopeng           ###   ########.fr       */
+/*   Updated: 2026/01/22 17:21:54 by yopeng           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ bool	fill_map(char *old_line, int fd, t_data *data)
 		if (!ft_strncmp("\n", line, 1))
 		{
 			write(2, "Error\nEmpty line in map\n", 24);
+			free(line);
 			return (false);
 		}
 		data->map->map_2d[i++] = ft_strdup_trim(line);
@@ -96,7 +97,10 @@ bool	parse_map(int fd, t_data *data, int *n_line)
 	if (!init_map(data, *n_line))
 		return (false);
 	if (!fill_map(line, fd, data))
+	{
+		get_next_line_trim(-1);
 		return (false);
+	}
 	if (!padding_map(data->map))
 		return (false);
 	if (!init_player(data))

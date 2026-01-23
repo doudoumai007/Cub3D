@@ -58,10 +58,10 @@ SRC_BONUS = \
 	src/raycasting/draw.c \
 	src/raycasting/util_draw.c \
 	src/raycasting/wall.c \
-	src/window/bonus/bonus_window.c \
-	src/window/bonus/bonus_border.c \
-	src/window/bonus/bonus_minimap.c \
-	src/window/bonus/bonus_player.c \
+	src/window/bonus/window_bonus.c \
+	src/window/bonus/border_bonus.c \
+	src/window/bonus/minimap_bonus.c \
+	src/window/bonus/player_bonus.c \
 
 OBJ_DIR = obj
 OBJ = $(SRC:src/%.c=$(OBJ_DIR)/%.o)

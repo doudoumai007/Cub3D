@@ -6,7 +6,7 @@
 /*   By: yopeng <yopeng@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 15:29:19 by yopeng            #+#    #+#             */
-/*   Updated: 2026/01/22 15:29:20 by yopeng           ###   ########.fr       */
+/*   Updated: 2026/01/22 18:17:21 by yopeng           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ bool	init_map(t_data *data, int n_line)
 	data->map->map_2d = ft_calloc(data->map->map_height + 1, sizeof(char *));
 	if (!data->map->map_2d)
 		return (false);
+	data->map->map_2d[data->map->map_height] = NULL;
 	data->map->n_player = 0;
 	data->map->player_x = 0;
 	data->map->player_y = 0;

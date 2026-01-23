@@ -6,7 +6,7 @@
 /*   By: yopeng <yopeng@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 15:29:05 by yopeng            #+#    #+#             */
-/*   Updated: 2026/01/22 15:29:06 by yopeng           ###   ########.fr       */
+/*   Updated: 2026/01/22 16:50:11 by yopeng           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,10 @@
 
 bool	texture_ok(t_textures *textures)
 {
-	int	*tmp_fd;
+	int	tmp_fd[4];
 	int	count;
 	int	i;
 
-	tmp_fd = malloc(sizeof(int) * 4);
-	if (!tmp_fd)
-		return (false);
 	tmp_fd[0] = open(textures->no_file, O_RDONLY);
 	tmp_fd[1] = open(textures->so_file, O_RDONLY);
 	tmp_fd[2] = open(textures->we_file, O_RDONLY);
@@ -36,7 +33,6 @@ bool	texture_ok(t_textures *textures)
 		}
 		i++;
 	}
-	free(tmp_fd);
 	return (count == 4);
 }
 
